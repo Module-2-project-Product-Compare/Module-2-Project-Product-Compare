@@ -3,25 +3,28 @@ const { Schema, model } = require('mongoose');
 const productSchema = new Schema(
   {
     name: {
-        type: String,
-        required: [true, 'Please add a name']
+      type: String,
+      required: [true, 'Please add a name']
     },
     image: {
-        type: String,
-        default: './images/product default.png',
+      type: String,
+      default: './images/product default edit.png'
     },
-    price: Number,
-    priceInMarket: Number,
-    description: String, 
-    pricesInMarket: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Price'
-      },
-    market: {
-     type: [Schema.Types.ObjectId],
-     ref: 'Market'   
+    price: {
+      type: Number
     }, 
+    priceInMarket: {
+      type: [Schema.Types.ObjectId],
+      ref: 'PriceIn'
     },
+    description: {
+      type:  String,
+    },
+    market: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Market'   
+    }
+  },
   {
     timestamps: true
   }
