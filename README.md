@@ -44,13 +44,25 @@ What can the user do with the app?
 - User can sign up and create and account
 - User can login
 - User can log out
-- User can create ...
+- User can search and see products
+- User can see the details of each product
+- User can see and edit his profile
+- Admin can add products
+- Admin can add markets
+- Admin can delete products
+- Admin can delete markets
+- Admin can edit products
+- Admin can edit markets
 
 ## User stories (Backlog)
 
-- User can upload a profile picture
-- User can ...
-
+- The user can search for products by geolocating supermarkets
+- User can add products as favorites
+- User can activate alerts
+- User can share products on social media
+- User can create shopping cart
+- User can write reviews
+- 
 ---
 
 ## Models
