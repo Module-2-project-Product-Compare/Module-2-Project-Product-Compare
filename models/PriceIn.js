@@ -1,10 +1,12 @@
 const { Schema, model } = require('mongoose');
  
-const offerSchema = new Schema(
+const priceInSchema = new Schema(
   {
-    discount: {
+    name: {
+      type: String,
+    },
+    priceInMarket: {
       type: Number,
-      required: [true, 'Introduce a discount']
     },
     market: {
       type: [Schema.Types.ObjectId],
@@ -20,6 +22,6 @@ const offerSchema = new Schema(
   }
 );
  
-const Offer = model('Offer', offerSchema);
+const PriceIn = model('PriceIn', priceInSchema);
 
-module.exports = Offer;
+module.exports = PriceIn;
