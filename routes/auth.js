@@ -68,7 +68,7 @@ router.post('/logout', (req, res, next) => {
     if (err) {
       next(err)
     } else {
-      res.redirect('/auth/login');
+      res.redirect('/');
     }
   });
 })
