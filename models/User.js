@@ -1,24 +1,32 @@
 const { Schema, model } = require('mongoose');
  
 const userSchema = new Schema(
-  // Add whichever fields you need for your app
   {
     username: {
       type: String,
       trim: true,
-      required: [true, 'Username is required.'],
+      required: [true, 'Please add a username.'],
       unique: true
     },
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: [true, 'Please add your email.'],
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
+      match: [/^\S+@\S+\.\S+$/, 'Valid email is required.']
     },
     hashedPassword: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'Please set a password.']
+    },
+    role: {
+      type: String,
+      default: 'user'
+    },
+    image: {
+      type: String,
+      default: './images/user default edit.png'
     }
   },
   {
