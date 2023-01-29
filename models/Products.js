@@ -2,16 +2,25 @@ const { Schema, model } = require('mongoose');
  
 const productSchema = new Schema(
   {
-    name: String,
+    name: {
+        type: String,
+        required: [true, 'Please add a name']
+    },
     image: {
         type: String,
-        default: 'https://www.genius100visions.com/wp-content/uploads/2017/09/placeholder-vertical.jpg',
+        default: './images/product default.png',
     },
+    price: Number,
+    priceInMarket: Number,
     description: String, 
-    seasons: {
+    pricesInMarket: {
         type: [Schema.Types.ObjectId],
-        ref: 'Brand'
-      } 
+        ref: 'Price'
+      },
+    market: {
+     type: [Schema.Types.ObjectId],
+     ref: 'Market'   
+    }, 
     },
   {
     timestamps: true
