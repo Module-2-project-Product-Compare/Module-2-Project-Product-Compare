@@ -26,7 +26,7 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      default: './images/user default edit.png'
+      default: '../images/user-default-edit.png'
     }
   },
   {

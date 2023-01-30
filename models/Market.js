@@ -8,7 +8,7 @@ const marketSchema = new Schema(
     },
     logo: {
       type: String,
-      default: './images/market default edit.png'
+      default: '../images/market-default-edit.png'
     },
   },
   {
