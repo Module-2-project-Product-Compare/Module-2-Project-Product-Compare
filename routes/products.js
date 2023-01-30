@@ -31,5 +31,17 @@ router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   }
 });
 
+// @desc    User can search products in the database
+// @route   POST /products
+// @access  Public
+router.get('/search', async function (req, res, next) {
+  const { name } = req.query;
+  try {
+    const product = await Product.findOne({ name: name });
+    res.render('search', { query: name, product: product });
+  } catch (error) {
+    next(error)
+  }
+});
 
 module.exports = router;
