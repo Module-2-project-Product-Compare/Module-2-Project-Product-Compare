@@ -17,7 +17,7 @@ router.get('/profile', /*isLoggedIn,*/ function (req, res, next) {
 // @access  Private
 router.get('/profile/edit', /*isLoggedIn,*/ function (req, res, next) {
   const user = req.session.currentUser;
-  res.render('profileEdit', user);
+  res.render('auth/profileEdit', user);
 });
 
 // @desc    Sends the changes made to the user profile
@@ -26,6 +26,7 @@ router.get('/profile/edit', /*isLoggedIn,*/ function (req, res, next) {
 router.post('/profile/edit', /*isLoggedIn,*/ async function (req, res, next) {
   const { username, image } = req.body;
   if (!username) {
+    console.log('user is not logged in');
     send.status(404);
   }
   const user = req.session.currentUser;
