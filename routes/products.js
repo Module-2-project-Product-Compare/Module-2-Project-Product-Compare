@@ -20,12 +20,12 @@ router.get('/new', function (req, res, next){
 
 // @desc    Admin can create new products in the database
 // @route   POST /products
-// @access  Privat
+// @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
-  const { name, format, image, price } = req.body;
+  const { category, name, format, image } = req.body;
   try {
-    const createProduct = await Product.create({ name, format, image, price });
-    res.redirect('/products', { createProduct } );
+    const createdProduct = await Product.create({ category, name, format, image });
+    res.redirect('/products', { createdProduct } );
   } catch (error) {
     next(error)
   }
