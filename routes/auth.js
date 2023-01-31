@@ -61,13 +61,14 @@ router.post('/login', async (req, res, next) => {
 })
 
 // @desc    Destroy user session and log out
-// @route   POST /auth/logout
+// @route   GET /auth/logout
 // @access  Private 
-router.post('/logout', (req, res, next) => {
+router.get('/logout', (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
       next(err)
     } else {
+      res.clearCookie('markget-cookie');
       res.redirect('/');
     }
   });
