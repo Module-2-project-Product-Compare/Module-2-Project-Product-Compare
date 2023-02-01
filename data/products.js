@@ -1,152 +1,152 @@
 module.exports = [
     {
         name: 'leche entera Hacendado',
-        format: '6 pack',
+        format: '6',
         image: '../images/leche-hacendado.jpg',
-        price: 5.46
+        category: "leche"
     },
     {
         name: 'leche entera Carrefour',
-        format: '6 pack',
+        format: '6',
         image: '../images/leche-carrefour.jpg',
-        price: 5.40
+        category: "leche"
     },
     {
         name: 'leche entera Dia',
-        format: '6 pack',
+        format: '6',
         image: '../images/leche-dia.jpg',
-        price: 5.40
+        category: "leche"
     },
     {
         name: 'leche entera Bon Àrea',
-        format: '6 pack',
+        format: '6',
         image: '../images/leche-bonarea.jpg',
-        price: 5.76
+        category: "leche"
     },
     {
         name: 'leche entera Alcampo',
-        format: '6 pack',
+        format: '6',
         image: '../images/leche-alcampo.jpg',
-        price: 5.70        
+        category: "leche"     
     },
     {
         name: 'Arroz largo Hacendado',
-        format: '1 kg',
+        format: '1 ',
         image: '../images/arroz-hacendado.jpg',
-        price: 1.30        
+        category: "arroz"       
     },
     {
         name: 'Arroz largo Carrefour',
-        format: '1 kg',
+        format: '1 ',
         image: '../images/arroz-carrefour.jpg',
-        price: 1.30        
+        category: "arroz"       
     },
     {
         name: 'Arroz largo Dia',
-        format: '1 kg',
+        format: '1 ',
         image: '../images/arroz-dia.jpg',
-        price: 1.39
+        category: "arroz"  
     },
     {
         name: 'Arroz largo Bon Àrea',
-        format: '1 kg',
+        format: '1 ',
         image: '../images/arroz-bonarea.jpg',
-        price: 1.30     
+        category: "arroz"      
     },
     {
         name: 'Arroz largo Alcampo',
-        format: '1 kg',
-        image: '../images/arroz-alcampo.jpg',
-        price: 1.29     
+        format: '1 ',
+        imae: '../imaes/arroz-alcampo.jpg',
+        category: "arroz"      
     },
     {
         name: 'Spagheti Hacendado',
-        format: '500 g',
+        format: '500',
         image: '../images/espagueti-hacendado.jpg',
-        price: 0.76     
+        category: "espagueti"      
     },
     {
         name: 'Spagheti Carrefour',
-        format: '500 g',
+        format: '500',
         image: '../images/espagueti-carrefour.jpg',
-        price: 0.76      
+        category: "espagueti"      
     },
     {
         name: 'Spagheti Dia',
-        format: '500 g',
+        format: '500',
         image: '../images/espagueti-dia.jpg',
-        price: 0.59       
+        category: "espagueti"        
     },
     {
         name: 'Spagheti Bon Àrea',
-        format: '500 g',
+        format: '500',
         image: '../images/espagueti-bonarea.jpg',
-        price: 0.76        
+        category: "espagueti"        
     },
     {
         name: 'Spagheti Alcampo',
-        format: '500 g',
+        format: '500',
         image: '../images/espagueti-alcampo.jpg',
-        price: 0.75 
+        category: "espagueti"  
     },
     {
         name: 'Pan molde Hacendado',
-        format: '500 g',
+        format: '500',
         image: '../images/pan-molde-hacendado.jpg',
-        price: 1.25   
+        category: "pan"    
     },
     {
         name: 'Pan molde Carrefour',
-        format: '500 g',
+        format: '500',
         image: '../images/pan-molde-carrefour.jpg',
-        price: 1.25  
+        category: "pan" 
     },
     {
         name: 'Pan molde Dia',
-        format: '500 g',
+        format: '500',
         image: '../images/pan-molde-dia.jpg',
-        price: 1.39  
+        category: "pan" 
     },
     {
         name: 'Pan molde Bon Àrea',
-        format: '500 g',
+        format: '500',
         image: '../images/pan-bonarea.jpg',
-        price: 1.50    
+        category: "pan"   
     },
     {
         name: 'Pan molde Alcampo',
-        format: '500 g',
+        format: '500',
         image: '../images/pan-molde-alcampo.jpg',
-        price: 1.10   
+        category: "pan"   
     },
     {
         name: 'Huevos grandes L Hacendado',
-        format: '12 u',
+        format: '12',
         image: '../images/huevos-mercadona.jpg',
-        price: 2.21      
+        category: "huevos"      
     },
     {
         name: 'Huevos grandes L Carrefour',
-        format: '12 u',
+        format: '12',
         image: '../images/huevos-carrefour.jpg',
-        price: 2.49     
+        category: "huevos"      
     },
     {
         name: 'Huevos grandes L Dia',
-        format: '12 u',
+        format: '12',
         image: '../images/huevos-dia.jpg',
-        price: 2.21       
+        category: "huevos"         
     },
     {
         name: 'Huevos grandes L BonÀrea',
-        format: '12 u',
+        format: '12',
         image: '../images/huevos-bonarea.jpg',
-        price: 1.80
+        category: "huevos"  
     },
     {
         name: 'Huevos grandes L Alcampo',
-        format: '12 u',
-        image: '../images/leche-alcampo.jpg',
-        price: 2.45
+        format: '12',
+        image: '../images/huevos-dia.jpg',
+        category: "huevos"  
     },
   ]
