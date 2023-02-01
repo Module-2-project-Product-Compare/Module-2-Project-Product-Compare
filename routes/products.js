@@ -25,10 +25,10 @@ router.get('/new', function (req, res, next){
 // @route   POST /products
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
-  const { category, name, format, image } = req.body;
+  const { name, format, image } = req.body;
   try {
-    const createdProduct = await Product.create({ category, name, format, image });
-    res.redirect('/products', { createdProduct } );
+    const createProduct = await Product.create({ name, format, image });
+    res.redirect('/products', { createProduct } );
   } catch (error) {
     next(error)
   }

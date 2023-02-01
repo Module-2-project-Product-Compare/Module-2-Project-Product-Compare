@@ -2,8 +2,8 @@
 
 {{#if product}}
     <h4>{{this.name}}</h4>
-  <img width="150px" src={{this.image}} alt={{this.name}}/>
+  <img src="{{image}} alt={{name}}/>
   <a href="/products/{{_id}}">See details</a>
   {{else}}
-  <p>Sorry, no shows found by {{query}}. Try again: <a href="/products">go back to shows</a></p>
+  <p>Sorry, no products found by {{query}}. Try again: <a href="/products">go back to products</a></p>
 {{/if}}
