@@ -10,6 +10,9 @@ const marketSchema = new Schema(
       type: String,
       default: '../images/market-default-edit.png'
     },
+    postalCode: {
+      type: Number,
+    },
   },
   {
     timestamps: true
