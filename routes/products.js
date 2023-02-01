@@ -74,4 +74,17 @@ router.post('/edit/:productId', async function (req, res, next) {
   }
 });
 
+// @desc    User can see product detail
+// @route   POST /detail/:productsId
+// @access  Public
+router.get('/:productId', async function (req, res, next) {
+  const { productId } = req.params;
+  try {
+    const product = await Product.findById(productId);
+    res.render('detail', product );
+  } catch (error) {
+    next(error)
+  }
+});
+
 module.exports = router;
