@@ -4,6 +4,7 @@ const marketSchema = new Schema(
   {
     name: {
       type: String,
+      enum: ['Alcampo', 'Bonarea', 'Carrefour', 'Dia', 'Mercadona'],
       required: [true, 'Please add a market name']
     },
     logo: {
@@ -12,6 +13,10 @@ const marketSchema = new Schema(
     },
     postalCode: {
       type: Number,
+      required: [true, 'Please add its Postal Code']
+    },
+    address: {
+      type: String
     },
   },
   {
