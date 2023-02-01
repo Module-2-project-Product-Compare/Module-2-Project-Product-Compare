@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const productSchema = new Schema(
   {
     category: {
-      type: String
+      type: String,
+      enum: [ 'leche', 'huevos', 'pan', 'arroz', 'espagueti']
     },
     name: {
       type: String,
