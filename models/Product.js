@@ -4,7 +4,7 @@ const productSchema = new Schema(
   {
     category: {
       type: String,
-      enum: [ 'leche', 'huevos', 'pan', 'arroz', 'pasta']
+      enum: [ 'leche', 'huevos', 'pan', 'arroz', 'espagueti']
     },
     name: {
       type: String,
