@@ -25,9 +25,9 @@ router.get('/new', function (req, res, next){
 // @route   POST /products
 // @access  Privat
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
-  const { name, format, image, price } = req.body;
+  const { name, format, image } = req.body;
   try {
-    const createProduct = await Product.create({ name, format, image, price });
+    const createProduct = await Product.create({ name, format, image });
     res.redirect('/products', { createProduct } );
   } catch (error) {
     next(error)

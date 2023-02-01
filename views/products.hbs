@@ -1,15 +1,9 @@
-<form method-"GET" action="/products/search">
-  <Label>Search by title</Label>
-  <input type="text" name="name"/>
-  <button type="submit">Search</button>
-</form>
 <h1>Products</h1>
 <div>
 {{#each products }}
 <img src="{{this.image}}" alt={{this.name}}>
 <h2>{{this.name}}</h2>
 <p>{{this.format}}</p>
-<p>{{this.price}} euros</p>
 <a href="/products/edit/{{product._id}}">Edit product</a>
 {{/each}}
 </div>
