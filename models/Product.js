@@ -2,26 +2,22 @@ const { Schema, model } = require('mongoose');
  
 const productSchema = new Schema(
   {
+    category: {
+      type: String,
+      enum: [ 'leche', 'huevos', 'pan', 'arroz', 'pasta']
+    },
     name: {
-        type: String,
-        required: [true, 'Please add a name']
+      type: String,
+      required: [true, 'Please add a product name']
+    },
+    format: {
+      type: Number
     },
     image: {
-        type: String,
-        default: './images/product default.png',
+      type: String,
+      default: '../images/product-default-edit.png'
     },
-    price: Number,
-    priceInMarket: Number,
-    description: String, 
-    pricesInMarket: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Price'
-      },
-    market: {
-     type: [Schema.Types.ObjectId],
-     ref: 'Market'   
-    }, 
-    },
+  },
   {
     timestamps: true
   }
