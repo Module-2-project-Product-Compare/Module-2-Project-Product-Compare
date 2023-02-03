@@ -1,0 +1,9 @@
+<h1>New article</h1>
+<div>
+{{#each prices }}
+<img src="{{this.image}}" alt={{this.name}}>
+<h2>{{this.name}}</h2>
+<p>{{this.format}}</p>
+<a href="/products/edit/{{product._id}}">Edit product</a>
+{{/each}}
+</div>
