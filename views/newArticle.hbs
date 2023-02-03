@@ -1,5 +1,5 @@
 <h2>Upload a new article</h2>
-<form method="POST" action="/articles">
+<form method="POST" action="/articles/new">
     <select name="product">
        {{#each allProducts}} 
         <option value="{{_id}}">{{name}}</option>
@@ -11,6 +11,6 @@
         {{/each}}
     </select>
     <label>New price</label>
-    <input required type="number" name="number"/>
+    <input required type="number" name="price"/>
     <button type="submit">Upload it</button>
 </form>
