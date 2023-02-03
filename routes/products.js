@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
+const Market = require('../models/Market');
 
 // @desc    Displays all products
 // @route   GET /products
@@ -17,17 +18,19 @@ router.get('/', async function (req, res, next) {
 // @desc    Admin can create new products in the database
 // @route   POST /products
 // @access  Privat
-router.get('/new', function (req, res, next){
-    res.render('newProduct');
+router.get('/new', async function (req, res, next){
+    const allProducts = await Product.find({});
+    const allMarkets = await Market.find({});
+    res.render('newPrice', {productsArr: allProducts}, {marketsArr: allMarkets});
   })
 
 // @desc    Admin can create new products in the database
 // @route   POST /products
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
-  const { name, format, image } = req.body;
+  const { price, market, product } = req.body;
   try {
-    const createProduct = await Product.create({ name, format, image });
+    const createProduct = await Product.create({ price, market, product });
     res.redirect('/products', { createProduct } );
   } catch (error) {
     next(error)
