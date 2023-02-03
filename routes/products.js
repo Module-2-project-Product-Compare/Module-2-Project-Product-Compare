@@ -27,7 +27,7 @@ router.get('/new', async function (req, res, next){
 
 // @desc    Admin can create new products in the database
 // @route   POST /products
-// @access  Privat
+// @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   const { price, market, product } = req.body;
   try {
@@ -73,6 +73,19 @@ router.post('/edit/:productId', async function (req, res, next) {
   try {
     const editedProduct = await Product.findByIdAndUpdate(productId, { name, format, image, price }, { new: true });
     res.redirect(`/products/${editedProduct._id}`);
+  } catch (error) {
+    next(error)
+  }
+});
+
+// @desc    User can see product detail
+// @route   POST /detail/:productsId
+// @access  Public
+router.get('/:productId', async function (req, res, next) {
+  const { productId } = req.params;
+  try {
+    const product = await Product.findById(productId);
+    res.render('detail', product );
   } catch (error) {
     next(error)
   }

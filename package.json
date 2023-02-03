@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "seed": "node ./seed",
+    "seedMarkets": "node ./seed/marketSeed",
     "dev": "nodemon ./bin/www",
     "start": "node ./bin/www"
   },
