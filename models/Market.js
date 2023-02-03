@@ -13,6 +13,7 @@ const marketSchema = new Schema(
     },
     postalCode: {
       type: Number,
+      enum: [08003, 08005, 08036],
       required: [true, 'Please add its Postal Code']
     },
     address: {
