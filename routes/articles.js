@@ -17,7 +17,7 @@ router.get('/', async function (req, res, next) {
 });
 
 // @desc    Admin can register new articles in the database
-// @route   POST /articles
+// @route   GET /articles/new
 // @access  Private
 router.get('/new', async function (req, res, next){
     const allProducts = await Product.find({});
@@ -26,13 +26,13 @@ router.get('/new', async function (req, res, next){
   });
 
 // @desc    Admin can register new articles in the database
-// @route   POST /articles
+// @route   POST /articles/new
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   const { price, market, product } = req.body;
   try {
     const createdArticle = await Article.create({ price, market, product });
-    res.redirect('/articles', { createdArticle } );
+    res.redirect(`/articles/${createdArticle._id}`);
   } catch (error) {
     next(error)
   }
