@@ -1,9 +1,8 @@
 <h3>Results by: {{query}}</h3>
-
-{{#if product}}
-    <h4>{{this.name}}</h4>
-  <img width="150px" src={{this.image}} alt={{this.name}}/>
-  <a href="/products/{{_id}}">See details</a>
+{{#if article}}
+  <h4>{{this.name}}</h4>
+  <img width="150px" src={{product.image}} alt={{product.name}}/>
+  <a href="/articles/{{_id}}">See details</a>
   {{else}}
-  <p>Sorry, no products found by {{query}}. Try again: <a href="/products">go back to products</a></p>
+  <p>Sorry, no articles found by {{query}}. Try again: <a href="/articles">go back to articles</a></p>
 {{/if}}

@@ -1,0 +1,9 @@
+<h2>Editing articles {{name}}</h2>
+<!--UPDATE BELOW KEYS / INPUTS TO ACCORDING ARTICLE MODEL-->
+<form method="POST" action="/articles/edit/{{_id}}">
+  <label>Article's name</label>
+  <input required type="text" name="name" value="{{name}}"/>
+  <label>Price</label>
+  <input required type="number" name="price" value="{{price}}"/>
+  <button type="submit">Save changes</button>
+</form>

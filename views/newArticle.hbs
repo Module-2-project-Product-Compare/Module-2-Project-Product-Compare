@@ -1,16 +1,16 @@
-<h2>Create a new article</h2>
-<form method="POST" action="/prices">
+<h2>Upload a new article</h2>
+<form method="POST" action="/articles">
     <select name="product">
-       {{#each productsArr}} 
+       {{#each allProducts}} 
         <option value="{{_id}}">{{name}}</option>
         {{/each}}
     </select>
     <select name="market">
-        {{#each marketsArr}} 
+        {{#each allMarkets}} 
         <option value="{{_id}}">{{name}}</option>
         {{/each}}
     </select>
     <label>New price</label>
     <input required type="number" name="number"/>
-    <button type="submit">Create it</button>
+    <button type="submit">Upload it</button>
 </form>

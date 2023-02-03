@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose');
  
-const priceSchema = new Schema(
+const articleSchema = new Schema(
   {
-    priceValue: {
+    price: {
       type: Number,
     },
     market: {
@@ -19,6 +19,6 @@ const priceSchema = new Schema(
   }
 );
  
-const Price = model('Price', priceSchema);
+const Article = model('Article', articleSchema);
 
-module.exports = Price;
+module.exports = Article;
