@@ -1,0 +1,21 @@
+<h2>Create a new article</h2>
+<form method="POST" action="/movies/create">
+    <label>Title:</label>
+    <input required type="text" name="title"/>
+    <label>Genre:</label>
+    <input type="text" name="genre"/>
+    <label>Plot:</label>
+    <input type="text" name="plot"/>
+    <label>Choose your cast:</label>
+    <select name="product" multiple>
+       {{#each allProducts}} 
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    <select name="market" multiple>
+             {{#each allMarkets}} 
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    <button type="submit">Create it</button>
+</form>
