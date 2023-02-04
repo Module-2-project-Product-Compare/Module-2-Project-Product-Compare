@@ -11,14 +11,6 @@ const marketSchema = new Schema(
       type: String,
       default: '../images/market-default-edit.png'
     },
-    postalCode: {
-      type: Number,
-      enum: [08003, 08005, 08036],
-      required: [true, 'Please add its Postal Code']
-    },
-    address: {
-      type: String
-    },
   },
   {
     timestamps: true
