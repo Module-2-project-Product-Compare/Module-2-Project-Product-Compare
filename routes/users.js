@@ -39,4 +39,15 @@ router.post('/profile/edit', /*isLoggedIn,*/ async function (req, res, next) {
   }
 });
 
+  router.get('/profile/delete/:userId', async function (req, res, next) {
+    const { userId } = req.params;
+    try {
+        const user = await User.findById(userId);
+        await User.deleteOne({ _id: userId });
+        res.redirect('/');
+    } catch (error) {
+        next(error)
+    }
+  });
+
 module.exports = router;
