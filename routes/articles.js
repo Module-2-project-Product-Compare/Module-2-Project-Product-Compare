@@ -30,12 +30,13 @@ router.get('/new', async function (req, res, next){
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   const { price, market, product } = req.body;
-  const { productId } = req.params;
-  const { marketId } = req.params;
+  // const { productId } = req.params;
+  // const { marketId } = req.params;
   try {
+    price
     const createdArticle = await Article.create({ price, market, product });
-    const product = await Product.findByIdAndUpdate(productId, { $push: { products: newProduct._id } });
-    const market = await Market.findByIdAndUpdate(marketId, { $push: { markets: newMarket._id } });
+    // const product = await Product.findByIdAndUpdate(productId, { $push: { products: newProduct._id } });
+    // const market = await Market.findByIdAndUpdate(marketId, { $push: { markets: newMarket._id } });
     console.log(product)
     res.redirect(`/articles/${createdArticle._id}`);
   } catch (error) {
@@ -73,10 +74,10 @@ router.get('/edit/:articleId', async function (req, res, next) {
 // @route   POST /edit/:articleId
 // @access  Private
 router.post('/edit/:articleId', async function (req, res, next) {
-  const { price, market, product } = req.body;
+  const { price } = req.body;
   const { articletId } = req.params;
   try {
-    const editedArticle = await Article.findByIdAndUpdate(articletId, { price, market, product }, { new: true });
+    const editedArticle = await Article.findByIdAndUpdate(articletId, { price }, { new: true });
     res.redirect(`/articles/${editedArticle._id}`);
   } catch (error) {
     next(error)
@@ -86,13 +87,12 @@ router.post('/edit/:articleId', async function (req, res, next) {
 // @desc    User can see articles detail
 // @route   POST /detail/:articleId
 // @access  Public
-
 router.get('/:articleId', async function (req, res, next) {
   const { articleId } = req.params;
   try {
-    const article = await Article.findById(articleId).populate('product','market');
+    const article = await Article.findById(articleId).populate('product', 'market');
+    console.log(article);
     res.render('detail', article );
-    console.log(article)
   } catch (error) {
     next(error)
   }
