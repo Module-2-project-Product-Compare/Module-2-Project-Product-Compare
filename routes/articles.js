@@ -30,8 +30,13 @@ router.get('/new', async function (req, res, next){
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   const { price, market, product } = req.body;
+  const { productId } = req.params;
+  const { marketId } = req.params;
   try {
     const createdArticle = await Article.create({ price, market, product });
+    const product = await Product.findByIdAndUpdate(productId, { $push: { products: newProduct._id } });
+       const market = await Market.findByIdAndUpdate(marketId, { $push: { markets: newMarket._id } });
+    console.log(product)
     res.redirect(`/articles/${createdArticle._id}`);
   } catch (error) {
     next(error)
@@ -85,8 +90,9 @@ router.post('/edit/:articleId', async function (req, res, next) {
 router.get('/:articleId', async function (req, res, next) {
   const { articleId } = req.params;
   try {
-    const article = await Article.findById(articleId);
-    res.render('detail', article );
+    const article = await Article.findById(articleId).populate('product, market');
+    res.render('detail', articleId );
+    console.log(article)
   } catch (error) {
     next(error)
   }

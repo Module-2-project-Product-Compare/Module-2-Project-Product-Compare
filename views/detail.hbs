@@ -1,16 +1,23 @@
-{{!-- <div>
-    <h4>Arcticle Details:</H4>
-    <h4>{{product.name}}</h4>
-    <img src="{{product.image}}" alt="{{product.name}}">
-    <h4>{{price}}</h4>
-    <p>Category: {{product.category}}</p>
-    <p>{{market.name}}</p>
-</div> --}}
-
-{{#each allProducts}}
-  <li>{{this.name}}</li>
-{{/each}}
-
-{{#each allMarkets}}
-  <li>{{this.name}}</li>
-{{/each}}
+<h4>Arcticle Details:</H4>
+<div>
+ <p>
+{{#each product }}  
+    <h4>{{this.name}}</h4>
+    <img src="{{image}}" alt="{{name}}">
+    <h4>{{article.price}}</h4>
+    <p>Category: {{this.category}}</p>
+    {{/each}}
+ </p> 
+ <div>
+    <p>
+        {{#each market }}
+        <p>Supermarket: {{this.name}}</p>
+        {{/each}}
+    </p>
+    <p>
+        {{#each articles }}
+        <p>Price: {{this.price}}</p>
+        {{/each}}
+    </p>
+ </div>
+</div>
