@@ -9,8 +9,8 @@ const Article = require('../models/Article');
 // @access  Public
 router.get('/', async function (req, res, next) {
     try {
-        const articles = await Article.find({});
-        res.render('articles', { articles });
+        const article = await Article.find({}).populate('product').populate('market');
+        res.render('articles', {article});
     } catch (error) {
         next(error)
     }
@@ -35,8 +35,6 @@ router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   try {
     price
     const createdArticle = await Article.create({ price, market, product });
-    // const product = await Product.findByIdAndUpdate(productId, { $push: { products: newProduct._id } });
-    // const market = await Market.findByIdAndUpdate(marketId, { $push: { markets: newMarket._id } });
     console.log(product)
     res.redirect(`/articles/${createdArticle._id}`);
   } catch (error) {
@@ -90,7 +88,7 @@ router.post('/edit/:articleId', async function (req, res, next) {
 router.get('/:articleId', async function (req, res, next) {
   const { articleId } = req.params;
   try {
-    const article = await Article.findById(articleId).populate('product', 'market');
+    const article = await Article.findById(articleId).populate('product').populate('market');
     console.log(article);
     res.render('detail', article );
   } catch (error) {
