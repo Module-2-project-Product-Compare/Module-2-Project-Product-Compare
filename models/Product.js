@@ -11,7 +11,7 @@ const productSchema = new Schema(
       required: [true, 'Please add a product name']
     },
     format: {
-      type: Number
+      type: String
     },
     image: {
       type: String,
