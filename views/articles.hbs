@@ -1,12 +1,12 @@
 <h1>Articles</h1>
 <!--UPDATE BELOW KEYS / INPUTS TO ACCORDING ARTICLE MODEL-->
 <div>
-  {{#each articles }}
-  <h2>{{name}}</h2>
-  <img src="{{image}}" alt={{product.name}}>
-  <h2>{{price}}</h2>
-  <p>{{product.format}}</p>
-  <p>{{market.name}}</p>
+  {{#each article }}
+  <h2>{{this.product.name}}</h2>
+  <img src="{{this.product.image}}" alt={{this.product.name}}>
+  <h2>Price: {{price}} euros $</h2>
+  <p>{{this.product.format}}</p>
+  <p>{{this.market.name}}</p>
   <p><a href="/articles/{{_id}}">See article</a></p>
   <p><a href="/articles/edit/{{article._id}}">Edit article</a></p>
   {{/each}}
