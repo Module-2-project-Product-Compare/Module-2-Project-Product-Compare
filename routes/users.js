@@ -44,6 +44,7 @@ router.post('/profile/edit', /*isLoggedIn,*/ async function (req, res, next) {
     try {
         const user = await User.findById(userId);
         await User.deleteOne({ _id: userId });
+        res.clearCookie('markget-cookie');
         res.redirect('/');
     } catch (error) {
         next(error)
