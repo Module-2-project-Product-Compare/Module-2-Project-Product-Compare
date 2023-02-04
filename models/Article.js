@@ -6,11 +6,11 @@ const articleSchema = new Schema(
       type: Number,
     },
     market: {
-      type: [Schema.Types.ObjectId],
+      type: Schema.Types.ObjectId,
       ref: 'Market'
     },
     product: {
-      type: [Schema.Types.ObjectId],
+      type: Schema.Types.ObjectId,
       ref: 'Product'
     }
   },
