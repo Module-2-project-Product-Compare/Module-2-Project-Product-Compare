@@ -4,6 +4,7 @@ const Product = require('../models/Product');
 const Market = require('../models/Market');
 const Article = require('../models/Article');
 
+
 // @desc    Displays all articles
 // @route   GET /articles
 // @access  Public
@@ -57,6 +58,15 @@ router.get('/search', async function (req, res, next) {
   }
 });
 
+router.post('/delete/:id', async function (req, res, next) {
+  const { id } = req.params;
+  try {
+      await Article.findByIdAndDelete(id);
+      res.redirect('/articles');
+  } catch (error) {
+      next(error)
+  }
+}); 
 
 // @desc    Edit form articles in the database
 // @route   POST /edit/:articlesId

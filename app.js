@@ -8,6 +8,9 @@ const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
+// Render form with handlebars, passing the formatPrice function as a variable
+
+
 // Routers require
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
