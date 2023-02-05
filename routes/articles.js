@@ -30,17 +30,19 @@ router.get('/new', async function (req, res, next){
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   const { price, market, product } = req.body;
-  // const { productId } = req.params;
-  // const { marketId } = req.params;
   try {
-    price
-    const createdArticle = await Article.create({ price, market, product });
-    console.log(product)
-    res.redirect(`/articles/${createdArticle._id}`);
+    const existingProduct = await Article.findOne({ product, market });
+    if (existingProduct) {
+      res.status(400).send({ message: "The product already exists" });
+    } else {
+      const createdArticle = await Article.create({ price, market, product });
+      res.redirect(`/articles/${createdArticle._id}`);
+    }
   } catch (error) {
     next(error)
   }
 });
+
 
 // @desc    User can search articles in the database
 // @route   POST /articles
@@ -54,6 +56,7 @@ router.get('/search', async function (req, res, next) {
     next(error)
   }
 });
+
 
 // @desc    Edit form articles in the database
 // @route   POST /edit/:articlesId
