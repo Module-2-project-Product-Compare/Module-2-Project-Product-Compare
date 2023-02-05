@@ -58,23 +58,13 @@ router.get('/search', async function (req, res, next) {
   }
 });
 
-router.post('/delete/:id', async function (req, res, next) {
-  const { id } = req.params;
-  try {
-      await Article.findByIdAndDelete(id);
-      res.redirect('/articles');
-  } catch (error) {
-      next(error)
-  }
-}); 
-
 // @desc    Edit form articles in the database
 // @route   POST /edit/:articlesId
 // @access  Private
 router.get('/edit/:articleId', async function (req, res, next) {
   const { articleId } = req.params;
   try {
-    const article = await Article.findById(articleId);
+    const article = await Article.findById(articleId).populate('product').populate('market');
     res.render('editArticle', article);
   } catch (error) {
     next(error)
@@ -86,14 +76,25 @@ router.get('/edit/:articleId', async function (req, res, next) {
 // @access  Private
 router.post('/edit/:articleId', async function (req, res, next) {
   const { price } = req.body;
-  const { articletId } = req.params;
+  const { articleId } = req.params;
   try {
-    const editedArticle = await Article.findByIdAndUpdate(articletId, { price }, { new: true });
+    const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true }).populate('product').populate('market');
     res.redirect(`/articles/${editedArticle._id}`);
+    console.log(editedArticle);////////////////
   } catch (error) {
     next(error)
   }
 });
+
+router.post('/delete/:id', async function (req, res, next) {
+  const { id } = req.params;
+  try {
+      await Article.findByIdAndDelete(id);
+      res.redirect('/articles');
+  } catch (error) {
+      next(error)
+  }
+}); 
 
 // @desc    User can see articles detail
 // @route   POST /detail/:articleId
@@ -102,7 +103,6 @@ router.get('/:articleId', async function (req, res, next) {
   const { articleId } = req.params;
   try {
     const article = await Article.findById(articleId).populate('product').populate('market');
-    console.log(article);
     res.render('detail', article );
   } catch (error) {
     next(error)
