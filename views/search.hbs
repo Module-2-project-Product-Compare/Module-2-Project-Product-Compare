@@ -1,8 +1,15 @@
-<h3>Results by: {{query}}</h3>
-{{#if article}}
-  <h4>{{this.name}}</h4>
-  <img width="150px" src={{product.image}} alt={{product.name}}/>
-  <a href="/articles/{{_id}}">See details</a>
-  {{else}}
-  <p>Sorry, no articles found by {{query}}. Try again: <a href="/articles">go back to articles</a></p>
-{{/if}}
+<h1>Results for: {{category}}</h1>
+<div>
+  {{#each article }}
+  <h2>{{product.name}}</h2>
+  <img width="150px" src="{{product.image}}" alt={{product.name}}>
+  <h2>Price: {{price}} euros $</h2>
+  <p>{{product.format}}</p>
+  <img width="100px" src="{{market.logo}}" alt={{market.name}}>
+  <p><a href="/articles/{{_id}}">See article</a></p>
+  <p><a href="/articles/edit/{{_id}}">Edit article</a></p>
+  <form method="POST" action="/articles/delete/{{_id}}">
+    <button class="button-1" type="submit" >Delete</button>
+  </form>
+  {{/each}}
+</div>

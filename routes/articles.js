@@ -30,13 +30,13 @@ router.get('/new', async function (req, res, next){
 // @route   POST /articles/new
 // @access  Private
 router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
-  const { price, market, product } = req.body;
+  const { price, category, market, product } = req.body;
   try {
     const existingProduct = await Article.findOne({ product, market });
     if (existingProduct) {
       res.status(400).send({ message: "The product already exists" });
     } else {
-      const createdArticle = await Article.create({ price, market, product });
+      const createdArticle = await Article.create({ price, category, market, product });
       res.redirect(`/articles/${createdArticle._id}`);
     }
   } catch (error) {
@@ -49,10 +49,10 @@ router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
 // @route   POST /articles
 // @access  Public
 router.get('/search', async function (req, res, next) {
-  const { name } = req.query;
+  const { category } = req.query;
   try {
-    const article = await Article.findOne({ name: name });
-    res.render('search', { query: name, article: article });
+    const article = await Article.find({ category }).populate('product').populate('market');
+    res.render('search', {article} );
   } catch (error) {
     next(error)
   }
@@ -80,7 +80,6 @@ router.post('/edit/:articleId', async function (req, res, next) {
   try {
     const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true }).populate('product').populate('market');
     res.redirect(`/articles/${editedArticle._id}`);
-    console.log(editedArticle);////////////////
   } catch (error) {
     next(error)
   }
