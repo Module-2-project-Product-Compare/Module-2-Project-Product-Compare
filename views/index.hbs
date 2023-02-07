@@ -4,3 +4,13 @@
     <input type="text" name="name" placeholder="Search for an article"/>
     <button type="submit">Search</button>
   </form>
+
+<h1>Productos aleatorios</h1>
+
+<ul>
+{{#each articles}}
+    <img width="150px" src="{{product.image}}" alt={{product.name}}>
+    <li>{{product.name}} - {{market.name}}</li>
+    <li>{{this.price}} </li>
+{{/each}}
+</ul>

@@ -44,7 +44,6 @@ router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
   }
 });
 
-
 // @desc    User can search articles in the database
 // @route   POST /articles
 // @access  Public
@@ -80,7 +79,7 @@ router.post('/edit/:articleId', async function (req, res, next) {
   try {
     const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true }).populate('product').populate('market');
     res.redirect(`/articles/${editedArticle._id}`);
-    console.log(editedArticle);////////////////
+    console.log(editedArticle);
   } catch (error) {
     next(error)
   }
