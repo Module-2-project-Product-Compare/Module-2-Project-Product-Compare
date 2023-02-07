@@ -25,7 +25,7 @@ module.exports = [
     },
     {
         _id: ObjectId('63de3e43869f79fd4dc59dec'),
-        name: 'Pan Bimbo',
+        name: 'Pan Bimbo',        
         format: 'Bimbo grande',
         category: "pan"     
     },
