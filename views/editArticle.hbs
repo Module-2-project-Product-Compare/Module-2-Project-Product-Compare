@@ -1,6 +1,6 @@
 <h2>Editing article {{this.product.name}}</h2>
 <form method="POST" action="/articles/edit/{{_id}}">
   <label>Price</label>
-  <input required type="number" name="price" value="{{price}}"/>
+  <input required type="number" name="price" value="{{price}}" step="any"/>
   <button type="submit">Save changes</button>
 </form>
