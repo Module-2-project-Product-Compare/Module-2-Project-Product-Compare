@@ -7,20 +7,28 @@
   <link href="/stylesheets/style.css" rel="stylesheet"/>
   <title>MarkGet web-app</title>
 </head>
-<body>
-  <nav>
-    <ul>
-      {{!--{{#if user}}--}}
-        <li><a href="/">Home</a></li>
-        <li><a href="/auth/logout">Log out</a></li>
-        <li><a href="/profile">Profile</a></li>
-      {{!--{{else}}--}}
-        {{!--<li><a href="/">Home</a></li>--}}
-        <li><a href="/auth/signup">Sign up</a></li>
-        <li><a href="/auth/login">Log in</a></li>
-      {{!--{{/if}}--}}
-    </ul>
+<body> 
+   
+  <header class="header">
+    <form method-"GET" action="/articles/search" class="form-container">
+    <input type="text" name="name" placeholder="Search for an article" class="form-input"/>
+    <button type="submit" class="form-button">Search</button>
+    </form>
+    <nav class="nav">
+      <ul class="nav_list">
+        {{!--{{#if user}}--}}
+          <li class="nav_item"><a href="/" class="nav__link">Home</a></li>
+          <li class="nav_item"><a href="/auth/logout" class="nav__link">Log out</a></li>
+          <li class="nav_item"><a href="/profile" class="nav__link">Profile</a></li>
+        {{!--{{else}}--}}
+          {{!--<li><a href="/">Home</a></li>--}}
+          <li class="nav_item"><a href="/auth/signup" class="nav__link">Sign up</a></li>
+          <li class="nav_item"><a href="/auth/login" class="nav__link">Log in</a></li>
+        {{!--{{/if}}--}}
+      </ul>
   </nav> 
+  </header>  
+  
   {{{ body }}}
   <script src="/javascript/script.js"></script>
 </body>

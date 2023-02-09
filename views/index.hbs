@@ -1,16 +1,11 @@
-<h1>MarkGet</h1>
-
- <form method-"GET" action="/articles/search">
-    <input type="text" name="category" placeholder="Search a category"/>
-    <button type="submit">Search</button>
-  </form>
-
 <h1>Productos aleatorios</h1>
 
-<ul>
-{{#each articles}}
-    <img width="150px" src="{{product.image}}" alt={{product.name}}>
-    <li>{{product.name}} - {{market.name}}</li>
-    <li>{{this.price}} </li>
-{{/each}}
-</ul>
+<div class="container">
+  {{#each articles}}
+    <div class="product">
+      <a href="/articles/{{product._id}}"><img width="150px" src="{{product.image}}" alt="{{product.name}}"></a>
+      <p>{{product.name}} - {{market.name}}</p>
+      <p>{{this.price}} euros</p>
+    </div>
+  {{/each}}
+</div>

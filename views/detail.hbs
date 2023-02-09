@@ -1,15 +1,22 @@
 <h4>Article Details:</H4>
 <div>
  <p> 
+    <h4>{{product.name}}</h4>
+    <img src="{{product.image}}" alt="{{product.name}}">    
+    <p>Category: {{product.category}}</p>
+ </p> 
+ <div>
+
+ </div>
+</div>
+<h4>Price Comparision</h4>
+{{#each productArticles}}
+<div>
+  <p>
     <h4>{{this.product.name}}</h4>
     <img src="{{this.product.image}}" alt="{{this.product.name}}">
     <h4>Price: {{this.price}} euros</h4>
-    <p>Category: {{this.product.category}}</p>
- </p> 
- <div>
-    <p>
-        <p>Supermarket: {{this.market.name}}</p>
-        <img src="{{this.market.logo}}" alt="{{this.makert.name}}">
-    </p>    
- </div>
+    <p>Supermarket: {{this.market.name}}</p>
+  </p>
 </div>
+{{/each}}

@@ -10,7 +10,7 @@ router.get('/', async function (req, res, next) {
     try {
         const articles = await Article.find({}).populate('product').populate('market');
         const randomArticles = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 20; i++) {
             const randomIndex = Math.floor(Math.random() * articles.length);
             randomArticles.push(articles[randomIndex]);
         }

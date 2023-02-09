@@ -97,14 +97,16 @@ router.post('/delete/:id', async function (req, res, next) {
 // @desc    User can see articles detail
 // @route   POST /detail/:articleId
 // @access  Public
-router.get('/:articleId', async function (req, res, next) {
-  const { articleId } = req.params;
+router.get('/:productId', async function (req, res, next) {
+  const { productId } = req.params;
   try {
-    const article = await Article.findById(articleId).populate('product').populate('market');
-    res.render('detail', article );
+    const product = await Product.findById(productId)
+    const productArticles = await Article.find({ product: productId }).populate('market');
+    res.render('detail', { product, productArticles });
   } catch (error) {
     next(error)
   }
 });
+
 
 module.exports = router;
