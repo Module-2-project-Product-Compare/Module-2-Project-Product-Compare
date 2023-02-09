@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const isLoggedIn  = require('../middlewares');
+const { isLoggedIn } = require('../middlewares');
 
 // @desc    Displays user profile view
 // @route   GET /profile

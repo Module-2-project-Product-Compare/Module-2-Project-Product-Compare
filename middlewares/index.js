@@ -1,24 +1,27 @@
-module.exports = isLoggedIn = (req, res, next) => {
+const isLoggedIn = (req, res, next) => {
   if (!req.session.currentUser) {
-    res.redirect('/auth/login')
-  } else {
-    console.log(`CURRENT USER: ${req.session.currentUser}`);
-    next()
+    return res.redirect('/login');
   }
+  next();
 };
-
-// module.exports = isLoggedOut = (req, res, next) => {
+ 
+// const isLoggedOut = (req, res, next) => {
 //   if (req.session.currentUser) {
-//     res.redirect('/')
-//   } else {
-//     next()
+//     return res.redirect('/');
 //   }
+//   next();
 // };
 
-// module.exports = isAdmin = (req, res, next) => {
-//   if (req.session.currentUser.role === 'admin') {
-//     next()
-//   } else {
-//     res.redirect('/auth/login')
-//   }
-// };
+const isAdmin = (req, res, next) => {
+  if (req.session.currentUser.role === 'admin') {
+     next()
+   } else {
+     res.redirect('/auth/login')
+   }
+ };
+ 
+module.exports = {
+  isLoggedIn,
+  //isLoggedOut,
+  isAdmin
+};
