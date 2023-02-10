@@ -9,7 +9,7 @@ module.exports = [
     {
         // _id: ObjectId('63de3e43869f79fd4dc59de9'),
         name: 'Arroz SOS',
-        format: '500g',
+        format: '1kg',
         image: '../images/arroz-sos-bolsa-1kg.jpg',
         category: "arroz"
     },
@@ -33,5 +33,40 @@ module.exports = [
         format: 'Bimbo grande',
         image: '../images/pan-bimbo.jpg',
         category: "pan"     
+    },
+        {
+        // _id: ObjectId('63de3e43869f79fd4dc59dec'),
+        name: 'Llet Nostra',        
+        format: '1kg',
+        image: '../images/llet-nostra.jpg',
+        category: "leche"     
+    },
+            {
+        // _id: ObjectId('63de3e43869f79fd4dc59dec'),
+        name: 'Leche Ato',        
+        format: '1kg',
+        image: '../images/leche-ato.jpg',
+        category: "leche"     
+    },
+                {
+        // _id: ObjectId('63de3e43869f79fd4dc59dec'),
+        name: 'Pizza Barbacoa',        
+        format: '1 u',
+        image: '../images/pizza-barbacoa.jpg',
+        category: "pizza"     
+    },
+                    {
+        // _id: ObjectId('63de3e43869f79fd4dc59dec'),
+        name: 'Pizza Bacon',        
+        format: '1 u',
+        image: '../images/pizza-bacon.jpg',
+        category: "pizza"     
+    },
+                        {
+        // _id: ObjectId('63de3e43869f79fd4dc59dec'),
+        name: 'Redbull',        
+        format: '1 u',
+        image: '../images/redbull.jpg',
+        category: "bebida"     
     },
   ]

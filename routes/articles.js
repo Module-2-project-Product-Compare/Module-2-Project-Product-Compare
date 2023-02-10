@@ -11,8 +11,8 @@ const { isAdmin } = require('../middlewares');
 // @access  Public
 router.get('/', async function (req, res, next) {
     try {
-        const article = await Article.find({}).populate('product').populate('market');
-        res.render('articles', {article});
+        const articles = await Article.find({}).populate('product').populate('market');
+        res.render('articles', {articles});
     } catch (error) {
         next(error)
     }
@@ -144,7 +144,16 @@ router.get('/:productId', async function (req, res, next) {
   const { productId } = req.params;
   try {
     const product = await Product.findById(productId)
-    const productArticles = await Article.find({ product: productId }).populate('market');
+    const productArticles = await Article.find({ product: productId }).populate('market').sort({price:1});
+    let isCheapest = true;
+    const cheapestArticle = productArticles[0];
+    productArticles.forEach((article) => {
+      if (article.price !== cheapestArticle.price) {
+        isCheapest = false;
+      }
+      article.isCheapest = isCheapest;
+      isCheapest = true;
+    });
     res.render('detail', { product, productArticles });
   } catch (error) {
     next(error)
