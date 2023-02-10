@@ -5,11 +5,6 @@ const articleSchema = new Schema(
     price: {
       type: Number,
     },
-    category: {
-      type: String,
-      enum: ['leche', 'huevos', 'pan', 'arroz', 'espagueti'],
-      required: [true, 'Please specify the category']
-    },
     market: {
       type: Schema.Types.ObjectId,
       ref: 'Market'

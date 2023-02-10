@@ -16,15 +16,15 @@
     </form>
     <nav class="nav">
       <ul class="nav_list">
-        {{!--{{#if user}}--}}
+        {{#if user}}
           <li class="nav_item"><a href="/" class="nav__link">Home</a></li>
           <li class="nav_item"><a href="/auth/logout" class="nav__link">Log out</a></li>
           <li class="nav_item"><a href="/profile" class="nav__link">Profile</a></li>
-        {{!--{{else}}--}}
-          {{!--<li><a href="/">Home</a></li>--}}
+        {{else}}
+          <li class="nav_item"><a href="/">Home</a></li>
           <li class="nav_item"><a href="/auth/signup" class="nav__link">Sign up</a></li>
           <li class="nav_item"><a href="/auth/login" class="nav__link">Log in</a></li>
-        {{!--{{/if}}--}}
+        {{/if}}
       </ul>
   </nav> 
   </header>  

@@ -35,7 +35,7 @@ router.post('/signup', isLoggedOut, async (req, res, next) => {
     const salt = await bcrypt.genSalt(saltRounds);
     const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({ username, email, hashedPassword });
-    res.render('auth/profile', user)
+    res.render('auth/login', user)
     }
   } catch (error) {
     next(error)

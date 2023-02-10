@@ -18,7 +18,7 @@ module.exports = [
         name: 'Espagueti Gallo',
         format: '500g',
         image: '../images/spaghetti-gallo-n3-500-gr.jpg',
-        category: "espagueti"
+        category: "pasta"
     },
     {
         // _id: ObjectId('63de3e43869f79fd4dc59deb'),

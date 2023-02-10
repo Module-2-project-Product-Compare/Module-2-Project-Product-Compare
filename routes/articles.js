@@ -22,10 +22,11 @@ router.get('/', async function (req, res, next) {
 // @route   GET /articles/new
 // @access  Private
 router.get('/new', isAdmin, async function (req, res, next){
-    const allProducts = await Product.find({});
-    const allMarkets = await Market.find({});
-    res.render('newArticle', { allProducts, allMarkets });
-  });
+  const user = req.session.currentUser;
+  const allProducts = await Product.find({});
+  const allMarkets = await Market.find({});
+  res.render('newArticle', { allProducts, allMarkets, user });
+});
 
 // @desc    Admin can register new articles in the database
 // @route   POST /articles/new
@@ -49,44 +50,26 @@ router.post('/new', isAdmin, async function (req, res, next) {
 // @route   POST /articles
 // @access  Public
 router.get('/search', async function (req, res, next) {
+  const user = req.session.currentUser;
   const { category } = req.query;
   try {
-    console.log(req.query);
-    
-    //const allProducts = await Product.find({});
-    //console.log(`---CONSOLE: ${allProducts}`);
-
-    const searchedProducts = await Product.find({ category: { $in: category }})
-    console.log(`---CONSOLE: ${searchedProducts}`);
-
-
-    //const { _id } = searchedProduct;
-    console.log(`---CONSOLE222: ${ searchedProduct._id }`)
-
-    res.render('search', { searchedProduct } );
+    const searchedProducts = await Product.find({ category });
+    console.log(searchedProducts)
+    res.render('search', { searchedProducts, category, user } );
   } catch (error) {
     next(error)
   }
 });
 
-/*router.get('/search', async function (req, res, next) {
-  const { category } = req.query;
-  try {
-    const article = await Article.find({ category }).populate('product').populate('market');
-    res.render('search', {article} );
-  } catch (error) {
-    next(error)
-  }
-});*/
-
 // @desc    Edit form articles in the database
 // @route   POST /edit/:articlesId /////////////////////
 // @access  Private
-router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
-  const { articleId } = req.params;
+router.get('/edit/:productId', isAdmin, async function (req, res, next) {
+  const user = req.session.currentUser;
+  const { productId } = req.params;
   try {
-    const article = await Article.findById(articleId).populate('product').populate('market');
-    res.render('editArticle', article);
+    const product = await Product.findById(productId);
+    res.render('editProduct', { product, user });
   } catch (error) {
     next(error)
   }
@@ -105,12 +88,12 @@ router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
 // @desc    Admin can edit articles in the database
 // @route   POST /edit/:articleId /////////////////////
 // @access  Private
-router.post('/edit/:articleId', isAdmin, async function (req, res, next) {
-  const { price } = req.body;
-  const { articleId } = req.params;
+router.post('/edit/:productId', isAdmin, async function (req, res, next) {
+  const { category, name, image } = req.body;
+  const { productId } = req.params;
   try {
-    const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true }).populate('product').populate('market');
-    res.redirect(`/articles/${editedArticle._id}`);
+    const editedProduct = await Product.findByIdAndUpdate(productId, { category, name, image }, { new: true });
+    res.redirect(`/articles/${editedProduct._id}`);
   } catch (error) {
     next(error)
   }
@@ -141,6 +124,7 @@ router.post('/delete/:id', isAdmin, async function (req, res, next) {
 // @route   POST /detail/:articleId
 // @access  Public
 router.get('/:productId', async function (req, res, next) {
+  const user = req.session.currentUser;
   const { productId } = req.params;
   try {
     const product = await Product.findById(productId)
@@ -154,7 +138,7 @@ router.get('/:productId', async function (req, res, next) {
       article.isCheapest = isCheapest;
       isCheapest = true;
     });
-    res.render('detail', { product, productArticles });
+    res.render('detail', { product, productArticles, user });
   } catch (error) {
     next(error)
   }

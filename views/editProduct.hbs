@@ -1,0 +1,14 @@
+<h2>Editing this product: {{product.name}}</h2>
+<form method="POST" action="/articles/edit/{{_id}}">
+
+  <label>Category</label>
+  <input required type="text" name="category" value="{{product.category}}"/>
+
+  <label>Name</label>
+  <input required type="text" name="name" value="{{product.name}}"/>
+
+  <label>Image</label>
+  <input required type="text" name="image" value="{{product.image}}"/>
+
+  <button type="submit">Save changes</button>
+</form>
