@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-//const isLoggedIn = require('../middlewares');
+const { isLoggedIn } = require('../middlewares');
 
 // @desc    Displays user profile view
 // @route   GET /profile
 // @access  Private
-router.get('/profile', /*isLoggedIn,*/ function (req, res, next) {
+router.get('/profile', isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
   res.render('auth/profile', user);
   console.log(user);
@@ -15,7 +15,7 @@ router.get('/profile', /*isLoggedIn,*/ function (req, res, next) {
 // @desc    Displays form view to edit user profile
 // @route   GET /profile/edit
 // @access  Private
-router.get('/profile/edit', /*isLoggedIn,*/ function (req, res, next) {
+router.get('/profile/edit', isLoggedIn, function (req, res, next) {
   const user = req.session.currentUser;
   res.render('auth/profileEdit', user);
 });
@@ -23,7 +23,7 @@ router.get('/profile/edit', /*isLoggedIn,*/ function (req, res, next) {
 // @desc    Sends the changes made to the user profile
 // @route   POST /profile/edit
 // @access  Private
-router.post('/profile/edit', /*isLoggedIn,*/ async function (req, res, next) {
+router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
   const { username, image } = req.body;
   if (!username) {
     console.log('user is not logged in');
@@ -39,7 +39,7 @@ router.post('/profile/edit', /*isLoggedIn,*/ async function (req, res, next) {
   }
 });
 
-  router.get('/profile/delete/:userId', async function (req, res, next) {
+  router.get('/profile/delete/:userId', isLoggedIn, async function (req, res, next) {
     const { userId } = req.params;
     try {
         const user = await User.findById(userId);

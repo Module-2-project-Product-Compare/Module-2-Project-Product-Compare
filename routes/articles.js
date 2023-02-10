@@ -3,6 +3,7 @@ const router = express.Router();
 const Product = require('../models/Product');
 const Market = require('../models/Market');
 const Article = require('../models/Article');
+const { isAdmin } = require('../middlewares');
 
 
 // @desc    Displays all articles
@@ -20,7 +21,7 @@ router.get('/', async function (req, res, next) {
 // @desc    Admin can register new articles in the database
 // @route   GET /articles/new
 // @access  Private
-router.get('/new', async function (req, res, next){
+router.get('/new', isAdmin, async function (req, res, next){
     const allProducts = await Product.find({});
     const allMarkets = await Market.find({});
     res.render('newArticle', { allProducts, allMarkets });
@@ -29,7 +30,7 @@ router.get('/new', async function (req, res, next){
 // @desc    Admin can register new articles in the database
 // @route   POST /articles/new
 // @access  Private
-router.post('/new', /*isLoggedIn,*/ async function (req, res, next) {
+router.post('/new', isAdmin, async function (req, res, next) {
   const { price, category, market, product } = req.body;
   try {
     const existingProduct = await Article.findOne({ product, market });
@@ -60,7 +61,7 @@ router.get('/search', async function (req, res, next) {
 // @desc    Edit form articles in the database
 // @route   POST /edit/:articlesId
 // @access  Private
-router.get('/edit/:articleId', async function (req, res, next) {
+router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
   const { articleId } = req.params;
   try {
     const article = await Article.findById(articleId).populate('product').populate('market');
@@ -73,7 +74,7 @@ router.get('/edit/:articleId', async function (req, res, next) {
 // @desc    Admin can edit articles in the database
 // @route   POST /edit/:articleId
 // @access  Private
-router.post('/edit/:articleId', async function (req, res, next) {
+router.post('/edit/:articleId', isAdmin, async function (req, res, next) {
   const { price } = req.body;
   const { articleId } = req.params;
   try {
@@ -84,7 +85,7 @@ router.post('/edit/:articleId', async function (req, res, next) {
   }
 });
 
-router.post('/delete/:id', async function (req, res, next) {
+router.post('/delete/:id', isAdmin, async function (req, res, next) {
   const { id } = req.params;
   try {
       await Article.findByIdAndDelete(id);
