@@ -51,15 +51,36 @@ router.post('/new', isAdmin, async function (req, res, next) {
 router.get('/search', async function (req, res, next) {
   const { category } = req.query;
   try {
-    const article = await Article.find({ category }).populate('product').populate('market');
-    res.render('search', {article} );
+    console.log(req.query);
+    
+    //const allProducts = await Product.find({});
+    //console.log(`---CONSOLE: ${allProducts}`);
+
+    const searchedProducts = await Product.find({ category: { $in: category }})
+    console.log(`---CONSOLE: ${searchedProducts}`);
+
+
+    //const { _id } = searchedProduct;
+    console.log(`---CONSOLE222: ${ searchedProduct._id }`)
+
+    res.render('search', { searchedProduct } );
   } catch (error) {
     next(error)
   }
 });
 
+/*router.get('/search', async function (req, res, next) {
+  const { category } = req.query;
+  try {
+    const article = await Article.find({ category }).populate('product').populate('market');
+    res.render('search', {article} );
+  } catch (error) {
+    next(error)
+  }
+});*/
+
 // @desc    Edit form articles in the database
-// @route   POST /edit/:articlesId
+// @route   POST /edit/:articlesId /////////////////////
 // @access  Private
 router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
   const { articleId } = req.params;
@@ -71,8 +92,18 @@ router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
   }
 });
 
+/*router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
+  const { articleId } = req.params;
+  try {
+    const article = await Article.findById(articleId).populate('product').populate('market');
+    res.render('editArticle', article);
+  } catch (error) {
+    next(error)
+  }
+});*/
+
 // @desc    Admin can edit articles in the database
-// @route   POST /edit/:articleId
+// @route   POST /edit/:articleId /////////////////////
 // @access  Private
 router.post('/edit/:articleId', isAdmin, async function (req, res, next) {
   const { price } = req.body;
@@ -84,6 +115,17 @@ router.post('/edit/:articleId', isAdmin, async function (req, res, next) {
     next(error)
   }
 });
+
+/*router.post('/edit/:articleId', isAdmin, async function (req, res, next) {
+  const { price } = req.body;
+  const { articleId } = req.params;
+  try {
+    const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true }).populate('product').populate('market');
+    res.redirect(`/articles/${editedArticle._id}`);
+  } catch (error) {
+    next(error)
+  }
+});*/
 
 router.post('/delete/:id', isAdmin, async function (req, res, next) {
   const { id } = req.params;
@@ -108,6 +150,5 @@ router.get('/:productId', async function (req, res, next) {
     next(error)
   }
 });
-
 
 module.exports = router;
