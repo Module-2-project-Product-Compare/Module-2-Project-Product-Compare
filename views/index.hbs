@@ -1,11 +1,11 @@
 <h1>Productos aleatorios</h1>
 
 <div class="container">
-  {{#each articles}}
+  {{#each products }}
     <div class="product">
-      <a href="/articles/{{product._id}}"><img width="150px" src="{{product.image}}" alt="{{product.name}}"></a>
-      <p>{{product.name}} - {{market.name}}</p>
-      <p>{{this.price}} euros</p>
+      <a href="/articles/{{this._id}}"><img width="150px" src="{{this.image}}" alt="{{this.name}}"></a>
+      <p>{{this.name}}</p>
+      {{!-- <p>{{this.article.price}} euros</p> --}}
     </div>
   {{/each}}
 </div>
