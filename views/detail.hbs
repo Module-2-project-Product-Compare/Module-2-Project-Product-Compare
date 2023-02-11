@@ -3,7 +3,12 @@
      <p> 
         <h1>{{product.name}}</h1>
         <h3>{{product.format}}</h3>
-        <img class="img-detail-product" src="{{product.image}}" alt="{{product.name}}">    
+        <img class="img-detail-product" src="{{product.image}}" alt="{{product.name}}">
+        <div>
+          {{#if showAdminBtns}}
+          <a href="/articles/edit/{{product._id}}">Edit product</a>
+          {{/if}}
+        </div>
      </p> 
   </div>
 </section>
@@ -19,12 +24,14 @@
         <img class="img-detail-logo" src="{{this.market.logo}}" alt="{{this.market.name}}">
         <h4>Price: {{this.price}} euros</h4>
       </div>
+      <div>
+        {{!-- {{#if showAdminBtns}} --}}
+          <a href="/articles/editArticle/{{_id}}">Edit price</a>
+        {{!-- {{/if}} --}}
+      </div>
     {{/each}}
   </div>
 </section>
-<section>
-  <p><a href="/articles/edit/{{product._id}}">Edit product</a></p>
   <form method="POST" action="/articles/delete/{{_id}}">
     <button class="button-1" type="submit" >Delete</button>
   </form>
-</section>

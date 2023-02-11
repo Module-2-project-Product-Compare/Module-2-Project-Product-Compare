@@ -54,7 +54,6 @@ router.get('/search', async function (req, res, next) {
   const { category } = req.query;
   try {
     const searchedProducts = await Product.find({ category });
-    console.log(searchedProducts)
     res.render('search', { searchedProducts, category, user } );
   } catch (error) {
     next(error)
@@ -62,7 +61,36 @@ router.get('/search', async function (req, res, next) {
 });
 
 // @desc    Edit form articles in the database
-// @route   POST /edit/:articlesId /////////////////////
+// @route   POST /editArticle/:articlesId /////////////////////
+// @access  Private
+router.get('/editArticle/:articleId', isAdmin, async function (req, res, next) {
+  const { articleId } = req.params;
+  try {
+    const article = await Article.findById(articleId);
+    res.render('editArticle', article);
+  } catch (error) {
+    next(error)
+  }
+});
+
+// @desc    Admin can edit articles in the database
+// @route   POST /editArticle/:articleId /////////////////////
+// @access  Private
+router.post('/editArticle/:articleId', isAdmin, async function (req, res, next) {
+  const { price } = req.body;
+  const { articleId } = req.params;
+  try {
+    const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true });
+    const productId = editedArticle.product;
+    const lastProduct = await Product.findById(productId);
+    res.redirect(`/articles/${lastProduct._id}`);
+  } catch (error) {
+    next(error)
+  }
+});
+
+// @desc    Edit form products in the database
+// @route   POST /edit/:productsId
 // @access  Private
 router.get('/edit/:productId', isAdmin, async function (req, res, next) {
   const user = req.session.currentUser;
@@ -75,18 +103,8 @@ router.get('/edit/:productId', isAdmin, async function (req, res, next) {
   }
 });
 
-/*router.get('/edit/:articleId', isAdmin, async function (req, res, next) {
-  const { articleId } = req.params;
-  try {
-    const article = await Article.findById(articleId).populate('product').populate('market');
-    res.render('editArticle', article);
-  } catch (error) {
-    next(error)
-  }
-});*/
-
 // @desc    Admin can edit articles in the database
-// @route   POST /edit/:articleId /////////////////////
+// @route   POST /edit/:productsId
 // @access  Private
 router.post('/edit/:productId', isAdmin, async function (req, res, next) {
   const { category, name, image } = req.body;
@@ -98,17 +116,6 @@ router.post('/edit/:productId', isAdmin, async function (req, res, next) {
     next(error)
   }
 });
-
-/*router.post('/edit/:articleId', isAdmin, async function (req, res, next) {
-  const { price } = req.body;
-  const { articleId } = req.params;
-  try {
-    const editedArticle = await Article.findByIdAndUpdate(articleId, { price }, { new: true }).populate('product').populate('market');
-    res.redirect(`/articles/${editedArticle._id}`);
-  } catch (error) {
-    next(error)
-  }
-});*/
 
 router.post('/delete/:id', isAdmin, async function (req, res, next) {
   const { id } = req.params;
@@ -125,6 +132,8 @@ router.post('/delete/:id', isAdmin, async function (req, res, next) {
 // @access  Public
 router.get('/:productId', async function (req, res, next) {
   const user = req.session.currentUser;
+  const userRole = user.role;
+  let showAdminBtns = undefined;
   const { productId } = req.params;
   try {
     const product = await Product.findById(productId)
@@ -137,8 +146,18 @@ router.get('/:productId', async function (req, res, next) {
       }
       article.isCheapest = isCheapest;
       isCheapest = true;
+    //   if (userRole === "admin") {
+    //    showAdminBtns = true;
+    //  } else {
+    //     showAdminBtns = false;
+    //  };
     });
-    res.render('detail', { product, productArticles, user });
+     if (userRole === "admin") {
+       showAdminBtns = true;
+     } else {
+        showAdminBtns = false;
+     };
+    res.render('detail', { product, productArticles, user, showAdminBtns });
   } catch (error) {
     next(error)
   }

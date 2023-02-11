@@ -1,7 +1,7 @@
 module.exports = [
     {
         // _id: ObjectId('63de3e43869f79fd4dc59de8'),
-        name: 'leche Asturiana',
+        name: 'Leche Asturiana',
         format: 'Tetra brick',
         image: '../images/leche-asturiana.jpeg',
         category: "leche"
