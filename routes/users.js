@@ -2,11 +2,10 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Highlighted = require('../models/Highlighted');
-// const Product = require('../models/Product');
-// const Market = require('../models/Market');
-// const Article = require('../models/Article');
-const { isLoggedIn } = require('../middlewares');
+const Product = require('../models/Product');
+const Market = require('../models/Market');
 const Article = require('../models/Article');
+const { isLoggedIn } = require('../middlewares');
 
 // @desc    Displays user profile view
 // @route   GET /profile
@@ -60,24 +59,35 @@ router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
 // @desc    Displays highlighted view
 // @route   GET /highlighted
 // @access  Private
-router.get('/highlighted', isLoggedIn, function (req, res, next) {
+router.get('/highlighted', isLoggedIn, async function (req, res, next) {
   const user = req.session.currentUser;
-  res.render('highlighted', { user });
+  try {
+    const highlighteds = await Highlighted.find({})
+    .populate({
+      path: 'article',
+      populate: { path: 'market' } })
+    .populate({
+      path: 'article',
+      populate: { path: 'product' } })
+    res.render('highlighted', { user, highlighteds });
+  } catch (error) {
+     next(error)
+ }
 });
 
 // @desc    Create new highlighted article
 // @route   POST /highlighted
 // @access  Private
 router.post('/highlighted/:articleId', isLoggedIn, async function (req, res, next) {
-  const thisUser = req.session.currentUser;
+  const user = req.session.currentUser;
   const { articleId } = req.params;
   try {
-    const existingHighlighted = await Highlighted.findOne({ thisArticle: articleId });
+    const existingHighlighted = await Highlighted.findOne({ article: articleId });
     if (existingHighlighted) {
     res.status(400).send({ message: "This article is already highlighted" });
     } else {
-    const thisArticle = await Article.findById(articleId);
-    const highlightedArticle = await Highlighted.create({ thisArticle, thisUser });
+    const article = await Article.findById(articleId);
+    const highlightedArticle = await Highlighted.create({ article, user });
     res.redirect('/highlighted');
     }
   } catch (error) {

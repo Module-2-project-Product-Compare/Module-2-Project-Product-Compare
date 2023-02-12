@@ -130,7 +130,7 @@ router.post('/edit/:productId', isAdmin, async function (req, res, next) {
 // @desc    Admin can delete articles in the database
 // @route   POST /delete/:id
 // @access  Private
-router.get('/delete/:id', isAdmin, async function (req, res, next) {
+router.post('/delete/:id', isAdmin, async function (req, res, next) {
   const { id } = req.params;
   try {
      await Article.findByIdAndDelete(id);
