@@ -132,8 +132,15 @@ router.post('/delete/:id', isAdmin, async function (req, res, next) {
 // @access  Public
 router.get('/:productId', async function (req, res, next) {
   const user = req.session.currentUser;
-  const userRole = user.role;
   let showAdminBtns = undefined;
+  if (user){
+    const userRole = user.role;
+    if (userRole === "admin") {
+       showAdminBtns = true;
+    } else {
+        showAdminBtns = false;
+    };
+  };
   const { productId } = req.params;
   try {
     const product = await Product.findById(productId)
@@ -146,17 +153,13 @@ router.get('/:productId', async function (req, res, next) {
       }
       article.isCheapest = isCheapest;
       isCheapest = true;
+    //   const userRole = user.role;
     //   if (userRole === "admin") {
     //    showAdminBtns = true;
     //  } else {
     //     showAdminBtns = false;
     //  };
     });
-     if (userRole === "admin") {
-       showAdminBtns = true;
-     } else {
-        showAdminBtns = false;
-     };
     res.render('detail', { product, productArticles, user, showAdminBtns });
   } catch (error) {
     next(error)
