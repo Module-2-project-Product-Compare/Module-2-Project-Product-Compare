@@ -6,7 +6,9 @@
         <img class="img-detail-product" src="{{product.image}}" alt="{{product.name}}">
         <div>
           {{#if showAdminBtns}}
-          <a href="/articles/edit/{{product._id}}">Edit product</a>
+            <form method="GET" action="/articles/edit/{{product._id}}">
+              <button class="button-1" type="submit" >Edit product</button>
+            </form>
           {{/if}}
         </div>
      </p> 
@@ -25,13 +27,22 @@
         <h4>Price: {{this.price}} euros</h4>
       </div>
       <div>
+        <form method="POST" action="/highlighted/{{_id}}">
+        <button type="submit" >Highlight</button>
+        </form>
+      </div>
+      <div>
         {{!-- {{#if showAdminBtns}} --}}
-          <a href="/articles/editArticle/{{_id}}">Edit price</a>
+          <form method="GET" action="/articles/editArticle/{{_id}}">
+            <button class="button-1" type="submit" >Edit price</button>
+          </form>
         {{!-- {{/if}} --}}
+      </div>
+      <div>
+        <form method="POST" action="/articles/delete/{{_id}}">
+          <button class="button-1" type="submit" >Delete</button>
+        </form>
       </div>
     {{/each}}
   </div>
 </section>
-  <form method="POST" action="/articles/delete/{{_id}}">
-    <button class="button-1" type="submit" >Delete</button>
-  </form>

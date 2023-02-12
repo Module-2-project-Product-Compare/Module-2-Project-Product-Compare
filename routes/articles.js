@@ -126,7 +126,7 @@ router.post('/delete/:id', isAdmin, async function (req, res, next) {
   } catch (error) {
       next(error)
   }
-}); 
+});
 
 // @desc    User can see articles detail
 // @route   POST /detail/:articleId
