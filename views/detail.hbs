@@ -1,3 +1,4 @@
+
 <section class="section-detail">
   <div>
      <p> 
@@ -27,11 +28,12 @@
       <div>
         {{!-- {{#if showAdminBtns}} --}}
           <a href="/articles/editArticle/{{_id}}">Edit price</a>
+          <a href="/articles/delete/{{_id}}">Delete</a>
         {{!-- {{/if}} --}}
       </div>
     {{/each}}
   </div>
 </section>
-  <form method="POST" action="/articles/delete/{{_id}}">
-    <button class="button-1" type="submit" >Delete</button>
+  {{!-- <form method="POST" action="/articles/delete/{{_id}}">
+    <button class="button-1" type="submit" >Delete</button> --}}
   </form>

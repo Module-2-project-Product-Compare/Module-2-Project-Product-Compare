@@ -1,0 +1,32 @@
+
+/*Product container*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-gap: 20px;
+    padding: 2%;
+}
+
+.container .product img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/*Categories container*/
+.categories {
+    padding: 2%;
+}
+
+.tag-container {
+    display: inline-block;
+}
+
+.tag {
+    color: var(--primary-orange);
+    border: 1px solid var(--primary-orange);
+    border-radius: 4px;
+    margin: 8px 8px 0 0;
+    padding: 4px;
+    text-decoration: none;
+}
