@@ -64,10 +64,11 @@ router.get('/search', async function (req, res, next) {
 // @route   POST /editArticle/:articlesId /////////////////////
 // @access  Private
 router.get('/editArticle/:articleId', isAdmin, async function (req, res, next) {
+  const user = req.session.currentUser;
   const { articleId } = req.params;
   try {
     const article = await Article.findById(articleId);
-    res.render('editArticle', article);
+    res.render('editArticle', { article, user });
   } catch (error) {
     next(error)
   }
