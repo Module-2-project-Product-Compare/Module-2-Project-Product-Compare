@@ -7,9 +7,8 @@
   <p>{{this.product.format}}</p>
   <p>{{this.market.name}}</p>
   <p><a href="/articles/{{product._id}}">See article</a></p>
-  <p><a href="/articles/edit/{{_id}}">Edit article</a></p>
-  <form method="POST" action="/articles/delete/{{_id}}">
-    <button class="button-1" type="submit" >Delete</button>
+  <p><a href="/articles/edit/{{_id}}">Edit article</a></p>  
+  <p><a href="/articles/delete/{{_id}}">Delete</a></p>
   </form>
   {{/each}}
 </div>

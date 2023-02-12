@@ -1,11 +1,18 @@
-<h1>Productos aleatorios</h1>
-
 <div class="container">
   {{#each products }}
     <div class="product">
-      <a href="/articles/{{this._id}}"><img width="150px" src="{{this.image}}" alt="{{this.name}}"></a>
+      <a href="/articles/{{this._id}}"><img src="{{this.image}}" alt="{{this.name}}"></a>
       <p>{{this.name}}</p>
       {{!-- <p>{{this.article.price}} euros</p> --}}
     </div>
   {{/each}}
+</div>
+<div class="categories">
+  <h2>Categories</h2>
+
+    <div class="tag-container">
+      {{#each uniqueCategories }}
+      <a class="tag" href="/category/{{this}}">{{this}}</a>
+      {{/each}}
+    </div>
 </div>

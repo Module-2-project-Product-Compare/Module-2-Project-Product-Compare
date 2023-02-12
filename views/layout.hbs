@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/stylesheets/style.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <title>MarkGet web-app</title>
 </head>
 <body> 
@@ -15,21 +16,26 @@
     <button type="submit" class="form-button">Search</button>
     </form>
     <nav class="nav">
-      <ul class="nav_list">
+      <div class="topnav" id="myTopnav">
         {{#if user}}
-          <li class="nav_item"><a href="/" class="nav__link">Home</a></li>
-          <li class="nav_item"><a href="/auth/logout" class="nav__link">Log out</a></li>
-          <li class="nav_item"><a href="/profile" class="nav__link">Profile</a></li>
+          <a href="/" class="active" >Home</a></li>
+          <a href="/auth/logout" class="nav__link">Log out</a></li>
+          <a href="/profile" class="nav__link">Profile</a></li>
+          <a href="/articles/new" class="nav__link">New Article</a></li>
         {{else}}
-          <li class="nav_item"><a href="/">Home</a></li>
-          <li class="nav_item"><a href="/auth/signup" class="nav__link">Sign up</a></li>
-          <li class="nav_item"><a href="/auth/login" class="nav__link">Log in</a></li>
+          <a href="/">Home</a></li>
+          <a href="/auth/signup" class="nav__link">Sign up</a></li>
+          <a href="/auth/login" class="nav__link">Log in</a></li>
         {{/if}}
-      </ul>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <span class="material-symbols-outlined">menu</span></a>
+      </div>
   </nav> 
   </header>  
   
   {{{ body }}}
+  <script src="/javascript/menu-responsive.js"></script>
   <script src="/javascript/script.js"></script>
+
 </body>
 </html>

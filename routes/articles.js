@@ -34,12 +34,18 @@ router.get('/new', isAdmin, async function (req, res, next){
 router.post('/new', isAdmin, async function (req, res, next) {
   const { price, category, market, product } = req.body;
   try {
-    const existingProduct = await Article.findOne({ product, market });
+    const existingProduct = await Article.findOne({ price, category, market, product  });
     if (existingProduct) {
-      res.status(400).send({ message: "The product already exists" });
+        const user = req.session.currentUser;
+        const allProducts = await Product.find({});
+        const allMarkets = await Market.find({});
+      res.render(`newArticle`, { allProducts, allMarkets, user, message: "The article already exists" });
     } else {
+        const user = req.session.currentUser;
+        const allProducts = await Product.find({});
+        const allMarkets = await Market.find({});
       const createdArticle = await Article.create({ price, category, market, product });
-      res.redirect(`/articles/${createdArticle._id}`);
+      res.render(`newArticle`, { allProducts, allMarkets, user, messageTwo: "Article created successfully,"});
     }
   } catch (error) {
     next(error)
@@ -59,6 +65,9 @@ router.get('/search', async function (req, res, next) {
     next(error)
   }
 });
+
+
+
 
 // @desc    Edit form articles in the database
 // @route   POST /editArticle/:articlesId /////////////////////
@@ -117,15 +126,19 @@ router.post('/edit/:productId', isAdmin, async function (req, res, next) {
   }
 });
 
-router.post('/delete/:id', isAdmin, async function (req, res, next) {
+// @desc    Admin can delete articles in the database
+// @route   POST /delete/:id
+// @access  Private
+router.get('/delete/:id', isAdmin, async function (req, res, next) {
   const { id } = req.params;
   try {
-      await Article.findByIdAndDelete(id);
-      res.redirect('/articles');
+     await Article.findByIdAndDelete(id);
+      res.render('detail');
   } catch (error) {
       next(error)
   }
 }); 
+
 
 // @desc    User can see articles detail
 // @route   POST /detail/:articleId

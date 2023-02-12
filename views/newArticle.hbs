@@ -1,3 +1,15 @@
+<h2>
+    {{#if message}}
+    <p>{{message}}</p>
+    <p>Do you want to create another article?</p>
+    {{/if}}    
+</h2>
+<h2>
+    {{#if messageTwo}}
+    <p>{{messageTwo}}</p>
+    <p>Do you want to create another?</p>
+    {{/if}}    
+</h2>
 <h2>Upload a new article</h2>
 <form method="POST" action="/articles/new">
     <select name="product">
