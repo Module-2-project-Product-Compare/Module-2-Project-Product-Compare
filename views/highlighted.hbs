@@ -1,10 +1,19 @@
-<h1>Highlighted Articles</h1>
-<div>
-  {{#each highlighteds }}
-    <h2>{{this.article.product.name}}</h2>
-    <img width="150px" src="{{this.article.product.image}}" alt={{this.article.product.name}}>
-    <h2>Price: {{this.article.price}} euros $</h2>
-    <p>{{this.article.product.format}}</p>
-    <p>{{this.article.market.name}}</p>
-  {{/each}}
-</div>
+<section class="highlighted container">
+  <h1 class="section-title">Highlighted Articles</h1>
+  <div class="page-content">
+    {{#each highlighteds }}
+      <section class="item-box">
+        <img class="item-img" src="{{this.article.product.image}}" alt={{this.article.product.name}}>
+        <h2 class="item-title">{{this.article.product.name}}</h2>
+        <div class="item-info">
+          <div class="item-text">
+            <p>Price: {{this.article.price}} €</p>
+            <p>{{this.article.product.format}}</p>
+          </div>
+          <img class="item-mkt" src="{{this.article.market.logo}}" alt={{this.article.market.name}}>
+        </div>
+        <i class='bx bx-x-circle' id="x-icon"></i>
+      </section>
+    {{/each}}
+  </div>
+</section>
