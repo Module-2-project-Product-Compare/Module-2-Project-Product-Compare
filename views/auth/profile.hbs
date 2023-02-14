@@ -1,6 +1,8 @@
-<h1>Welcome {{ user.username }}</h1>
-<img width="150px" src={{user.image}} alt={{user.image.default}}/>
-<p>Email: {{user.email}}</p>
-<p>Role: {{user.role}}</p>
-<a href="/profile/edit">Edit profile</a>
-<a href="/profile/delete/{{user._id}}">Delete profile</a>
+<section class="page container">
+  <h1  class="section-title">Welcome {{ user.username }}</h1>
+  <img width="150px" src={{user.image}} alt={{user.image.default}}/>
+  <p>Email: {{user.email}}</p>
+  <p>Role: {{user.role}}</p>
+  <a href="/profile/edit">Edit profile</a>
+  <a href="/profile/delete/{{user._id}}">Delete profile</a>
+</section>

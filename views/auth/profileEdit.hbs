@@ -1,9 +1,11 @@
-<h1>Editing {{user.username}}'s profile</h1>
+<section  class="page container">
+  <h1  class="section-title">Editing {{user.username}}'s profile</h1>
 
-<form method="POST" action="/profile/edit">
-  <label>New username:</label>
-  <input type="text" name="username" required="true" value="{{user.username}}"/>
-  <label>New profile image:</label>
-  <input type="text" name="image" width="100px" src="{{user.image}}" placeholder="https://..."/>
-  <button type="submit">Save changes</button>
-</form>
+  <form method="POST" action="/profile/edit">
+    <label>New username:</label>
+    <input type="text" name="username" required="true" value="{{user.username}}"/>
+    <label>New profile image:</label>
+    <input type="text" name="image" width="100px" src="{{user.image}}" placeholder="https://..."/>
+    <button type="submit">Save changes</button>
+  </form>
+</section>

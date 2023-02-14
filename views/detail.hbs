@@ -38,7 +38,7 @@
         {{/if}}
       </div>
       <div>
-        {{#if showAdminBtns}}
+        {{#if this.userAdmin}}
           <form method="POST" action="/articles/delete/{{_id}}">
             <button class="button-1" type="submit" >Delete</button>
           </form>
