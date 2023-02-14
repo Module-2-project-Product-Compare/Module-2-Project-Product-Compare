@@ -69,6 +69,7 @@ router.get('/highlighted', isLoggedIn, async function (req, res, next) {
     .populate({
       path: 'article',
       populate: { path: 'product' } })
+      console.log(highlighteds);
     res.render('highlighted', { user, highlighteds });
   } catch (error) {
      next(error)

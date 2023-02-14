@@ -33,18 +33,18 @@
         </form>
       </div>
       <div>
-        {{!-- {{#if showAdminBtns}} --}}
+        {{#if this.userAdmin}}
           <form method="GET" action="/articles/editArticle/{{_id}}">
             <button class="button-1" type="submit" >Edit price</button>
           </form>
-        {{!-- {{/if}} --}}
+        {{/if}}
       </div>
       <div>
-        {{!-- {{#if showAdminBtns}} --}}
+        {{#if showAdminBtns}}
           <form method="POST" action="/articles/delete/{{_id}}">
             <button class="button-1" type="submit" >Delete</button>
           </form>
-        {{!-- {{/if}} --}}
+        {{/if}}
       </div>
     {{/each}}
   </div>
