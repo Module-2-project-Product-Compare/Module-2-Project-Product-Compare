@@ -57,7 +57,7 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/', usersRouter);
 app.use('/articles', articlesRouter);
-app.use('/category', categoryRouter);
+app.use('/category/', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
