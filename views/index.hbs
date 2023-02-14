@@ -1,6 +1,13 @@
 <div>
-  <img class="img-home" src="../images/Shopping.jpg" alt="">
-</div>       
+  <img class="img-home" src="../images/BGhome.jpg" alt="">
+</div>  
+<div class="categories">
+    <div class="tag-container">
+      {{#each uniqueCategories }}
+      <a class="tag" href="/category/{{this}}">{{this}}</a>
+      {{/each}}
+    </div>
+</div>     
 <div class="container">
   {{#each products }}
     <div class="product">
@@ -9,13 +16,4 @@
       {{!-- <p>{{this.article.price}} euros</p> --}}
     </div>
   {{/each}}
-</div>
-<div class="categories">
-  <h2>Categories</h2>
-
-    <div class="tag-container">
-      {{#each uniqueCategories }}
-      <a class="tag" href="/category/{{this}}">{{this}}</a>
-      {{/each}}
-    </div>
 </div>

@@ -1,30 +1,30 @@
-<h2>
+<h2 class="message">
     {{#if message}}
     <p>{{message}}</p>
     <p>Do you want to create another article?</p>
     {{/if}}    
 </h2>
-<h2>
+<h2 class="messagetwo">
     {{#if messageTwo}}
     <p>{{messageTwo}}</p>
     <p>Do you want to create another?</p>
     {{/if}}    
 </h2>
-<h2>Upload a new article</h2>
-<form method="POST" action="/articles/new">
-    <select name="product">
+<h2 class="title-section">Upload a new article</h2>
+<form class="new-form" method="POST" action="/articles/new">
+    <select class="all-products" name="product">
        {{#each allProducts}} 
         <option value="{{_id}}">{{name}}</option>
         {{/each}}
     </select>
-    <select name="market">
+    <select class="all-markets" name="market">
         {{#each allMarkets}} 
         <option value="{{_id}}">{{name}} </option>
         {{/each}}
     </select>
-    <label>Category</label>
-    <input required type="text" name="category"/>
-    <label>New price</label>
-    <input required type="number" name="price" step="any"/>
-    <button type="submit">Upload it</button>
+    <label class="title-label">Category</label>
+    <input class="inp-form-new" required type="text" name="category"/>
+    <label class="title-label">New price</label>
+    <input class="inp-form-new"required type="number" name="price" step="any"/>
+    <button class="create-product" type="submit">Upload it</button>
 </form>
