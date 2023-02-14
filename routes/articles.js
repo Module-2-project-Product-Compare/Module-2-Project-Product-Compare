@@ -162,6 +162,9 @@ router.get('/:productId', async function (req, res, next) {
     let isCheapest = true;
     const cheapestArticle = productArticles[0];
     productArticles.forEach((article) => {
+      if(showAdminBtns){
+        article.userAdmin = true;
+      }
       if (article.price !== cheapestArticle.price) {
         isCheapest = false;
       }

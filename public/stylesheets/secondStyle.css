@@ -1,0 +1,118 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-padding-top: 2rem;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+:root {
+  --main-color: #fd4646;
+  --text-color: #171427;
+  --bg-color: whitesmoke;
+  --green-color: #3EB081;
+}
+img {
+  width: 100%;
+}
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+.container {
+  max-width: 1068px;
+  margin: auto;
+  width: 100%;
+}
+section {
+  padding: 4rem 0 3rem;
+}
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+  z-index: 100;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.logo {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 400;
+}
+#star-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+#user-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+#x-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.highlighted {
+  margin-top: 2rem;
+}
+.page-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+  gap: 1.5rem
+}
+.item-box {
+  position: relative;
+  padding: 7px;
+  background-color: white;
+  box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+}
+.item-box:hover {
+  padding: 14px;
+  border: 1px solid var(--text-color);
+  transition: 0.4s;
+  box-shadow: 0 5px 10px hsl(0 4% 15% / 10%);
+}
+.item-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.item-text {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+.item-mkt {
+  width: 30%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.item-info {
+  display: flex;
+  justify-content: space-between;
+}
