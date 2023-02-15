@@ -61,6 +61,14 @@ router.post('/profile/edit', isLoggedIn, async function (req, res, next) {
 // @access  Private
 router.get('/highlighted', isLoggedIn, async function (req, res, next) {
   const user = req.session.currentUser;
+      let showAdminBtns = undefined;
+    if (user){
+        const userRole = user.role;
+    if (userRole === "admin") {
+        showAdminBtns = true;
+    } else {
+        showAdminBtns = false;
+    }};
   try {
     const highlighteds = await Highlighted.find({})
     .populate({
@@ -70,7 +78,7 @@ router.get('/highlighted', isLoggedIn, async function (req, res, next) {
       path: 'article',
       populate: { path: 'product' } })
       console.log(highlighteds);
-    res.render('highlighted', { user, highlighteds });
+    res.render('highlighted', { user, highlighteds, showAdminBtns });
   } catch (error) {
      next(error)
  }

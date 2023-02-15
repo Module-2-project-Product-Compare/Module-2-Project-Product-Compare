@@ -172,12 +172,6 @@ router.get('/:productId', async function (req, res, next) {
       }
       article.isCheapest = isCheapest;
       isCheapest = true;
-    //   const userRole = user.role;
-    //   if (userRole === "admin") {
-    //    showAdminBtns = true;
-    //  } else {
-    //     showAdminBtns = false;
-    //  };
     });
     res.render('detail', { product, productArticles, user, showAdminBtns });
   } catch (error) {

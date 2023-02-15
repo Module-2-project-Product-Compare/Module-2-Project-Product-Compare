@@ -1,4 +1,16 @@
-<div>
+<section class="page container">
+  <h1 class="section-title">Today's articles</h1>
+  <div class="page-content">
+    {{#each products }}
+      <section class="item-box">
+        <a href="/articles/{{this._id}}"><img  class="item-img" src="{{this.image}}" alt="{{this.name}}"></a>
+        <h2 class="item-title">{{this.name}}</h2>
+      </section>
+    {{/each}}
+  </div>
+</section>
+
+{{!-- <div>
   <img class="img-home" src="../images/BGhome.jpg" alt="">
 </div>  
 <div class="categories">
@@ -13,7 +25,7 @@
     <div class="product">
       <a href="/articles/{{this._id}}"><img src="{{this.image}}" alt="{{this.name}}"></a>
       <p>{{this.name}}</p>
-      {{!-- <p>{{this.article.price}} euros</p> --}}
+      <p>{{this.article.price}} euros</p>
     </div>
   {{/each}}
-</div>
+</div> --}}
