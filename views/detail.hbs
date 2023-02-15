@@ -1,5 +1,55 @@
+<section class="page container">
+  <h1 class="section-title">This article details:</h1>
+  <div class="page-content">
+    <div  class="item-box">
+      <img class="img-detail-product" src="{{product.image}}" alt="{{product.name}}">
+      <h1>{{product.name}}</h1>
+      <h3>{{product.format}}</h3>
+      <div>
+        {{#if showAdminBtns}}
+          <form method="GET" action="/articles/edit/{{product._id}}">
+            <button class="button-no-style" type="submit" ><i class='bx bx-edit' id="edit-icon"></i></button>
+          </form>
+        {{/if}}
+      </div>
+    </div>
+    
+    <section class="section-detail">
+      <h2>Products available in the following supermarkets:</h2>
+      <div class="product-container">
+        {{#each productArticles}}
+          {{#if this.isCheapest}}
+            <div class="product-info cheapest">
+          {{else}}
+            <div class="product-info">
+          {{/if}}
 
-<section class="section-detail-product">
+              <img class="img-detail-logo" src="{{this.market.logo}}" alt="{{this.market.name}}">
+              <h4>Price: {{this.price}} €</h4>
+              <form method="POST" action="/highlighted/{{_id}}">
+              <button class="button-1" type="submit" >Mark it</button>
+              </form>
+
+          <div class="actions-buttons"> 
+          {{#if this.userAdmin}}
+            <form method="GET" action="/articles/editArticle/{{_id}}">
+              <button class="button-no-style" type="submit" ><i class='bx bx-edit' id="edit-icon"></i></button>
+            </form>
+
+            <form method="POST" action="/articles/delete/{{_id}}">
+              <button class="button-no-style" type="submit" ><i class='bx bx-x-circle' id="x-icon"></i></button>
+            </form>
+          {{/if}}
+          </div>
+
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  </div>
+</section>
+
+{{!-- <section class="section-detail-product">
   <div>
         <h1>{{product.name}}</h1>
         <h3>{{product.format}}</h3>
@@ -46,4 +96,4 @@
       </div>
     {{/each}}
   </div>
-</section>
+</section> --}}

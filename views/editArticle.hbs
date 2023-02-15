@@ -1,6 +1,11 @@
-<h2>Edit this article price</h2>
-<form method="POST" action="/articles/editArticle/{{article._id}}">
-  <label>Price</label>
-  <input required type="number" name="price" value="{{article.price}}" step="any"/>
-  <button type="submit">Save changes</button>
-</form>
+
+<section class="page container">
+  <h2 class="section-title">Edit this article price</h2>
+  <div class="page-content">
+    <form method="POST" action="/articles/editArticle/{{article._id}}">
+      <label>Price</label>
+      <input required type="number" name="price" value="{{article.price}}" step="any"/>
+      <button type="submit">Save changes</button>
+    </form>
+  </div>
+</section>

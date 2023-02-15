@@ -11,57 +11,38 @@
   <title>MarkGet web-app</title>
 </head>
 <body> 
-  {{!-- Header --}}
+
   <header>
-    <!--Nav-bar-->
     <section class="nav container">
-      <nav>
-        <div class="topnav" id="myTopnav">
-          {{#if user}}
-            <a href="/" class="active" >Home</a></li>
-            <a href="/auth/logout" class="nav__link">Log out</a></li>
-            <a href="/profile" class="nav__link">Profile</a></li>
-            <a href="/articles/new" class="nav__link">New Article</a></li>
-          {{else}}
-            <a href="/">Home</a></li>
-            <a href="/auth/signup" class="nav__link">Sign up</a></li>
-            <a href="/auth/login" class="nav__link">Log in</a></li>
+      <nav class="topnav" id="myTopnav">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <span class="material-symbols-outlined">menu</span></a>
+        {{#if user}}
+          <a href="/profile" class="nav__link">Profile</a>
+          <a href="/auth/logout" class="nav__link">Log out</a>
+          {{#if showAdminBtns}}
+            <a href="/articles/new" class="nav__link">New Article</a>
           {{/if}}
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <span class="material-symbols-outlined">menu</span></a>
-        </div>
+        {{else}}
+          <a href="/auth/signup" class="nav__link">Sign up</a>
+          <a href="/auth/login" class="nav__link">Log in</a>
+        {{/if}}
       </nav>
       <div>
         <a href="/" class="logo">MarkGet</a>
       </div>
       <div>
         <form method-"GET" action="/articles/search" class="form-container">
-        <input type="text" name="category" placeholder="Search for a category" class="form-input"/>
+        <input type="text" name="category" placeholder="search by category" class="form-input"/>
         <button type="submit" class="form-button">Search</button>
         </form>
       </div>
-      <div>
+      {{!-- <div>
         <i class='bx bx-star' id="star-icon"></i>
         <i class='bx bx-user-circle' id="user-icon"></i>
-      </div>
+      </div> --}}
     </section>
 
-    {{!-- <nav class="nav">
-      <div class="topnav" id="myTopnav">
-        {{#if user}}
-          <a href="/" class="active" >Home</a></li>
-          <a href="/auth/logout" class="nav__link">Log out</a></li>
-          <a href="/profile" class="nav__link">Profile</a></li>
-          <a href="/articles/new" class="nav__link">New Article</a></li>
-        {{else}}
-          <a href="/">Home</a></li>
-          <a href="/auth/signup" class="nav__link">Sign up</a></li>
-          <a href="/auth/login" class="nav__link">Log in</a></li>
-        {{/if}}
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <span class="material-symbols-outlined">menu</span></a>
-      </div>
-  </nav> --}}
   </header>  
   
   {{{ body }}}
