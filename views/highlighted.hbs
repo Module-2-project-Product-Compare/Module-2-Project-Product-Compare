@@ -12,7 +12,10 @@
           </div>
           <img class="item-mkt" src="{{this.article.market.logo}}" alt={{this.article.market.name}}>
         </div>
-        <i class='bx bx-x-circle' id="x-icon"></i>
+        <form action="/delete/{{_id}}" method="post" id="delete-form">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit"><i class='bx bx-x-circle' id="x-icon"></i></button>
+        </form>
       </section>
     {{/each}}
   </div>

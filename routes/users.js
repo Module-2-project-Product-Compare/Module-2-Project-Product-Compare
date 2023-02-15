@@ -96,4 +96,19 @@ router.post('/highlighted/:articleId', isLoggedIn, async function (req, res, nex
   }
 });
 
+// @desc    Admin can delete articles in the database
+// @route   POST /delete/:id
+// @access  Private
+router.post('/delete/:id', isLoggedIn, async function (req, res, next) {
+  const { id } = req.params;
+  try {
+    const deleteHighlighted = await Highlighted.findByIdAndDelete(id);
+    const highId = deleteHighlighted.article;
+    await Article.findById(highId)
+      res.redirect('/highlighted');
+  } catch (error) {
+      next(error)
+  }
+});
+
 module.exports = router;

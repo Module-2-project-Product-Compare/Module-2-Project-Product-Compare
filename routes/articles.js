@@ -133,8 +133,10 @@ router.post('/edit/:productId', isAdmin, async function (req, res, next) {
 router.post('/delete/:id', isAdmin, async function (req, res, next) {
   const { id } = req.params;
   try {
-     await Article.findByIdAndDelete(id);
-      res.render('detail');
+     const deleteArticle = await Article.findByIdAndDelete(id);
+        const productId = deleteArticle.product;
+        const lastProduct = await Product.findById(productId);
+      res.redirect(`/articles/${lastProduct._id}`);
   } catch (error) {
       next(error)
   }
