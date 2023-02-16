@@ -70,7 +70,7 @@ router.get('/highlighted', isLoggedIn, async function (req, res, next) {
         showAdminBtns = false;
     }};
   try {
-    const highlighteds = await Highlighted.find({})
+    const highlighteds = await Highlighted.find({user: user._id})
     .populate({
       path: 'article',
       populate: { path: 'market' } })

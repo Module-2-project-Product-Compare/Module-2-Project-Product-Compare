@@ -3,7 +3,7 @@
   <div class="page-content">
     {{#each highlighteds }}
       <section class="item-box">
-        <img class="item-img" src="{{this.article.product.image}}" alt={{this.article.product.name}}>
+        <a href="/articles/{{this.article.product._id}}"><img class="item-img" src="{{this.article.product.image}}" alt={{this.article.product.name}}></a>
         <h2 class="item-title">{{this.article.product.name}}</h2>
         <div class="item-info">
           <div class="item-text">
