@@ -25,19 +25,13 @@
         </form>
         </div>
 
-        {{!-- <div class="box">
-        <form method-"GET" action="/articles/search">
-          <input class="input" type="text" name="category" placeholder="Search by category"/>
-          <button class="btn-search" type="submit"><i class='bx bx-search'></i></button>
-        </form>
-        </div> --}}
-
       <nav class="topnav" id="myTopnav">
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <span class="material-symbols-outlined">menu</span></a>
         {{#if user}}
           <a href="/profile" class="nav__link">Profile</a>
           <a href="/auth/logout" class="nav__link">Log out</a>
+          <a href="/highlighted">Your selection</a>
           {{#if showAdminBtns}}
             <a href="/articles/new" class="nav__link">New Article</a>
           {{/if}}

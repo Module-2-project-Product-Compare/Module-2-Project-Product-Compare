@@ -1,6 +1,6 @@
 <section class="page container">
 <h1 class="section-title">Upload a new article</h1>
-<div class="page-content">
+
     <h2 class="message">
         {{#if message}}
         <p>{{message}}</p>
@@ -13,23 +13,27 @@
         <p>Do you want to create another?</p>
         {{/if}}    
     </h2>
-    {{!-- <h2 class="title-section">Upload a new article</h2> --}}
-    <form class="new-form" method="POST" action="/articles/new">
-        <select class="all-products" name="product">
-        {{#each allProducts}} 
-            <option value="{{_id}}">{{name}}</option>
-            {{/each}}
-        </select>
-        <select class="all-markets" name="market">
-            {{#each allMarkets}} 
-            <option value="{{_id}}">{{name}} </option>
-            {{/each}}
-        </select>
-        {{!-- <label class="title-label">Category</label>
-        <input class="inp-form-new" required type="text" name="category"/> --}}
-        <label class="title-label">New price</label>
-        <input class="inp-form-new"required type="number" name="price" step="any"/>
-        <button class="create-product" type="submit">Upload it</button>
+    
+    <form class="form-bar" method="POST" action="/articles/new">
+        <div>
+            <select name="product">
+                {{#each allProducts}} 
+                <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div>
+            <select name="market">
+                {{#each allMarkets}} 
+                <option value="{{_id}}">{{name}} </option>
+                {{/each}}
+            </select>
+        </div>
+        <div>
+            <label class="title-label">New price:</label>
+            <input class="inp-form-new"required type="number" name="price" step="any"/>
+        </div>
+        <button class="button-1" type="submit">Upload it</button>
     </form>
 </div>
 </section>
