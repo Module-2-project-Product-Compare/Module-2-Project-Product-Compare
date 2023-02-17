@@ -110,7 +110,7 @@ header {
   background-color: white;
   box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
   margin: 0 20px;
-  max-height: 550px;
+  max-height: 565px;
 }
 
 .item-box:hover {
@@ -311,14 +311,14 @@ header {
 }
 
 .search-bar button {
-  /* transform: translate(190%,-5%); */
   border: 0;
-  border-radius: 50%;
   width: 25px;
   height: 25px;
-  background: var(--yellow-color);
+  background: whitesmoke;
   cursor: pointer;
-  color: white;
+  color: var(--text-color);
+  opacity: 50%;
+  font-size: 20px;
 }
 
 .inside-search {
