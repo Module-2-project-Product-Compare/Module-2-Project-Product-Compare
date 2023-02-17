@@ -1,8 +1,12 @@
-<h1>Results for: {{category}}</h1>
-<div>
-  {{#each searchedProducts }}
-  <h2>{{this.name}}</h2>
-  <a href="/articles/{{this._id}}"><img width="150px" src="{{this.image}}" alt="{{this.name}}"></a>
-  <p>{{this.format}}</p>
-  {{/each}}
-</div>
+<section class="page container">
+  <h1 class="section-title">Results for: {{category}}</h1>
+  <div class="page-content">
+    {{#each searchedProducts }}
+    <section class="item-box">
+      <a href="/articles/{{this._id}}"><img class="item-img" width="150px" src="{{this.image}}" alt="{{this.name}}"></a>
+      <h2 class="item-title">{{this.name}}</h2>
+      <p class="item-text">{{this.format}}</p>
+    </section>
+    {{/each}}
+  </div>
+</section>

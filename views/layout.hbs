@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{!-- <link href="/stylesheets/style.css" rel="stylesheet"/> --}}
-  <link href="/stylesheets/secondStyle.css" rel="stylesheet"/>
+  <link href="/stylesheets/style.css" rel="stylesheet"/>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <title>MarkGet web-app</title>
@@ -14,6 +13,25 @@
 
   <header>
     <section class="nav container">
+
+      <div>
+        <a href="/" class="logo"><img id="basket-logo" src="/images/logo-markget-green.png">MarkGet</a>
+      </div>
+
+        <div class="search-bar">
+        <form class="inside-search" method-"GET" action="/articles/search">
+          <input type="text" name="category" placeholder="Search by category"/>
+          <button type="submit"><i class='bx bx-search'></i></button>
+        </form>
+        </div>
+
+        {{!-- <div class="box">
+        <form method-"GET" action="/articles/search">
+          <input class="input" type="text" name="category" placeholder="Search by category"/>
+          <button class="btn-search" type="submit"><i class='bx bx-search'></i></button>
+        </form>
+        </div> --}}
+
       <nav class="topnav" id="myTopnav">
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <span class="material-symbols-outlined">menu</span></a>
@@ -28,20 +46,7 @@
           <a href="/auth/login" class="nav__link">Log in</a>
         {{/if}}
       </nav>
-      <div>
 
-        <a href="/" class="logo"><img id="basket-logo" src="/images/logo-markget-green.png">MarkGet</a>
-      </div>
-      <div>
-        <form method-"GET" action="/articles/search" class="form-container">
-        <input type="text" name="category" placeholder="search by category" class="form-input"/>
-        <button type="submit" class="form-button">Search</button>
-        </form>
-      </div>
-      {{!-- <div>
-        <i class='bx bx-star' id="star-icon"></i>
-        <i class='bx bx-user-circle' id="user-icon"></i>
-      </div> --}}
     </section>
 
   </header>  
@@ -52,26 +57,3 @@
 
 </body>
 </html>
-
-  {{!-- <header class="header">
-    <form method-"GET" action="/articles/search" class="form-container">
-    <input type="text" name="category" placeholder="Search for a category" class="form-input"/>
-    <button type="submit" class="form-button">Search</button>
-    </form>
-    <nav class="nav">
-      <div class="topnav" id="myTopnav">
-        {{#if user}}
-          <a href="/" class="active" >Home</a></li>
-          <a href="/auth/logout" class="nav__link">Log out</a></li>
-          <a href="/profile" class="nav__link">Profile</a></li>
-          <a href="/articles/new" class="nav__link">New Article</a></li>
-        {{else}}
-          <a href="/">Home</a></li>
-          <a href="/auth/signup" class="nav__link">Sign up</a></li>
-          <a href="/auth/login" class="nav__link">Log in</a></li>
-        {{/if}}
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <span class="material-symbols-outlined">menu</span></a>
-      </div>
-  </nav> 
-  </header>  --}}

@@ -3,8 +3,8 @@
   <div class="page-content">
     <div  class="item-box">
       <img class="img-detail-product" src="{{product.image}}" alt="{{product.name}}">
-      <h1>{{product.name}}</h1>
-      <h3>{{product.format}}</h3>
+      <h2 class="item-title">{{product.name}}</h2>
+      <h3 class="item-text">{{product.format}}</h3>
       <div>
         {{#if showAdminBtns}}
           <form method="GET" action="/articles/edit/{{product._id}}">
