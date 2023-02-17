@@ -1,10 +1,10 @@
 <section class="page container">
   <h1 class="section-title">Today's articles</h1>
-  <div class="page-content">
+  <div class="page-content-home">
     {{#each products }}
       <section class="item-box">
         <a href="/articles/{{this._id}}"><img  class="item-img" src="{{this.image}}" alt="{{this.name}}"></a>
-        <h2 class="item-title">{{this.name}}</h2>
+        <h2 class="item-title-home">{{this.name}}</h2>
       </section>
     {{/each}}
   </div>

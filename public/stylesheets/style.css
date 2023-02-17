@@ -103,6 +103,12 @@ header {
   gap: 1.5rem
 }
 
+.page-content-home {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+  gap: 1.5rem
+}
+
 .item-box {
   position: relative;
   padding: 10px;
@@ -133,6 +139,13 @@ header {
   margin-bottom: 0.5rem;
 }
 
+.item-title-home {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
 .item-text {
   font-size: 1rem;
   font-weight: 400;
@@ -152,9 +165,10 @@ header {
 
 /* Navigation */
 
+
 .topnav {
   overflow: hidden;
-  background-color: white);
+  background-color: white;
 }
 
 .topnav a {
@@ -236,7 +250,6 @@ header {
 
   .product-info {
     background-color: white;
-    /* padding: 20px; */
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     width: 300px;
@@ -323,6 +336,9 @@ header {
 
 .inside-search {
   display: flex;
+}
+.search-bar button {
+  display: none;
 }
 
 /* Media Query */
