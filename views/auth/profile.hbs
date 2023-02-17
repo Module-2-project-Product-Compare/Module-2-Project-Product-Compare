@@ -1,9 +1,16 @@
 <section class="page container">
   <h1  class="section-title">Welcome {{ user.username }}</h1>
-  <img width="150px" src={{user.image}} alt={{user.image.default}}/>
-  <p>Email: {{user.email}}</p>
-  <p>Role: {{user.role}}</p>
-  <a href="/profile/edit">Edit profile</a>
-  <a href="/profile/delete/{{user._id}}">Delete profile</a>
-  <a href="/highlighted">Your selection</a>
+
+  <div class="form-bar">
+    <img class="user-img" src={{user.image}} alt={{user.image.default}}/>
+    <div class="profile-text">
+      <p>Email: {{user.email}}</p>
+      <p>Role: {{user.role}}</p>
+    </div>
+    <div class="profile-icons">
+      <a href="/profile/edit"><i class='bx bx-edit' id="edit-icon"></i></a>
+      <a href="/profile/delete/{{user._id}}"><i class='bx bx-x-circle' id="x-icon"></i></a>
+      <a href="/highlighted"><i class='bx bx-star' id="star-icon"></i></a>
+    </div>
+  </div>
 </section>

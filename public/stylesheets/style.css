@@ -80,6 +80,12 @@ header {
   color: var(--text-color);
 }
 
+#star-icon {
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
 .actions-buttons{
   width: 100px;
   display: flex;
@@ -409,5 +415,52 @@ header {
 .form-bar button {
   width: 150px;
   margin: 25px auto;
+  box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-img {
+  width: 200px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.profile-text {
+  text-align: center;
+  background: white;
+  border-radius: 50px;
+  padding: 5px 15px;
+  color: var(--text-color);
+  width: 100%;
+  font-size: 17px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+}
+
+.profile-text p {
+  margin: 10px;
+}
+
+.profile-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.profile-icons i {
+  background-color: var(--yellow-color);
+  color: #fff;
+  padding: 5px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 20px;
   box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
 }
