@@ -1,11 +1,14 @@
-
 <section class="page container">
-  <h2 class="section-title">Edit this article price</h2>
-  <div class="page-content">
-    <form method="POST" action="/articles/editArticle/{{article._id}}">
-      <label>Price</label>
-      <input required type="number" name="price" value="{{article.price}}" step="any"/>
-      <button type="submit">Save changes</button>
+  <h1 class="section-title">Edit this article price</h1>
+
+    <form class="form-bar" method="POST" action="/articles/editArticle/{{article._id}}">
+      <div>
+        <label>Price:</label>
+      </div>
+      <div>
+        <input required type="number" name="price" value="{{article.price}}" step="any"/>
+      </div>
+      <button class="button-1" type="submit">Save</button>
     </form>
-  </div>
+
 </section>

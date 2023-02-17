@@ -1,11 +1,20 @@
 <section  class="page container">
   <h1  class="section-title">Editing {{user.username}}'s profile</h1>
 
-  <form method="POST" action="/profile/edit">
+  <form class="form-bar" method="POST" action="/profile/edit">
+  <div>
     <label>New username:</label>
+  </div>
+  <div>
     <input type="text" name="username" required="true" value="{{user.username}}"/>
+  </div>
+  <div>
     <label>New profile image:</label>
+  </div>
+  <div>
     <input type="text" name="image" width="100px" src="{{user.image}}" placeholder="https://..."/>
-    <button type="submit">Save changes</button>
+  </div>
+    <button class="button-1" type="submit">Save</button>
   </form>
+
 </section>
